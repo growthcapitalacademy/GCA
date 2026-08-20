@@ -175,12 +175,6 @@ ul {
     color: var(--text-main);
     white-space: nowrap;  
 }
-.logo span {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.1;
-}
-
 
 .nav-menu {
     display: flex;
