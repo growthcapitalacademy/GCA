@@ -169,11 +169,12 @@ ul {
 }
 
 .logo-text {
-    font-size: 1.1rem;  
+    font-size: 0.95rem;     /* Réduit légèrement la taille pour que ça passe bien sur 2 lignes */
     font-weight: 800;
     letter-spacing: 1px;
-    color: var(--text-main);
-    white-space: nowrap;  
+    color: var(--gold);     /* Met le texte en jaune doré */
+    line-height: 1.2;       /* Rapproche un peu les deux lignes pour l'esthétique */
+    white-space: normal;    /* Permet au texte de passer à la ligne */
 }
 
 .nav-menu {
