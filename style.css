@@ -168,22 +168,28 @@ ul {
     flex-shrink: 0;
 }
 
+/* Style global du titre sur 2 lignes */
+
 .hero-title {
     display: flex;
     flex-direction: column; /* Force chaque span à aller à la ligne */
+    font-family: 'Montserrat', sans-serif, -apple-system, BlinkMacSystemFont; /* Belle police moderne */
     font-weight: 800;
-    line-height: 1.2;
+    font-size: 6rem;        /* 🔍 Modifie cette taille pour l'agrandir ou le rapetisser à ta guise */
+    line-height: 1.15;      /* Rapproche les deux lignes élégamment */
+    letter-spacing: 1px;    /* Ajoute un léger espace entre les lettres pour le style */
 }
 
-/* Première ligne en jaune doré */
+/* Première ligne en jaune doré (#d4af37) */
 .hero-title .line-gold {
-    color: var(--gold); /* Utilise ton jaune doré (#d4af37) */
+    color: var(--gold); 
 }
 
 /* Deuxième ligne en blanc */
 .hero-title .line-white {
     color: #ffffff;
 }
+2.
 
 .nav-menu {
     display: flex;
