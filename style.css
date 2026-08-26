@@ -423,8 +423,8 @@ ul {
 .benefit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
 .benefit-card { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 30px 20px; border-radius: 12px; transition: var(--transition); }
 .benefit-card:hover { transform: translateY(-5px); background: var(--bg-card-hover); border-color: var(--gold); }
-.benefit-icon { font-size: 1.5rem; font-weight: 900; color: var(--gold); margin-bottom: 15px; }
-.benefit-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
+.benefit-icon { font-size: 1.5rem; font-weight: 900; color: var(--gold); margin-bottom: 25px; }
+.benefit-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 25px; }
 .benefit-card p { color: var(--text-muted); font-size: 0.9rem; }
 
 /* ==========================================================================
@@ -450,39 +450,6 @@ ul {
 .program-button { display: block; width: 100%; text-align: center; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); color: var(--text-main); padding: 12px; border-radius: 8px; font-weight: 700; transition: var(--transition); }
 .program-card:hover .program-button { background: var(--gold); color: var(--bg-dark); border-color: var(--gold); }
 
-/* ==========================================================================
-   WHY SECTION & BONUS
-   ========================================================================== */
-.why-section { background: var(--bg-card); border-top: 1px solid var(--border-color); }
-.why-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center; }
-.why-content h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 800; margin-bottom: 20px; }
-.why-content h2 span { color: var(--gold); }
-.why-content p { color: var(--text-muted); margin-bottom: 30px; }
-.features { display: flex; flex-direction: column; gap: 25px; }
-.feature { display: flex; gap: 20px; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 20px; border-radius: 12px; transition: var(--transition); }
-.feature:hover { border-color: var(--gold); background: var(--bg-card-hover); }
-.feature-icon { font-size: 1.2rem; font-weight: 900; color: var(--gold); min-width: 30px; }
-.feature h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 5px; }
-.feature p { color: var(--text-muted); font-size: 0.9rem; margin: 0; }
-
-.bonus-section { position: relative; padding: 80px 0; overflow: hidden; }
-.bonus-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 500px; height: 300px; background: rgba(212, 175, 55, 0.1); filter: blur(100px); border-radius: 50%; }
-.bonus-card { position: relative; z-index: 2; background: linear-gradient(135deg, var(--bg-card) 0%, #141c2e 100%); border: 1px solid var(--gold); border-radius: 20px; padding: 50px; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; }
-.bonus-label { background: rgba(212, 175, 55, 0.15); color: var(--gold); padding: 5px 12px; border-radius: 4px; font-size: 0.75rem; font-weight: 800; }
-.bonus-card h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 800; margin: 15px 0 10px; }
-.bonus-card h2 span { color: var(--gold); }
-.bonus-card > div > p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; }
-.bonus-items { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
-.bonus-item { display: flex; align-items: center; gap: 10px; font-size: 0.95rem; font-weight: 600; }
-.bonus-item span { color: var(--gold); }
-.bonus-value { font-size: 0.85rem; color: var(--text-muted); }
-.bonus-value strong { color: var(--gold); font-size: 1.1rem; }
-.bonus-right { background: rgba(0, 0, 0, 0.2); border: 1px solid var(--border-color); padding: 30px; border-radius: 12px; text-align: center; }
-.spots { display: flex; justify-content: center; align-items: baseline; gap: 5px; margin-bottom: 10px; }
-.spots span { font-size: 0.85rem; color: var(--text-muted); }
-.spots strong { font-size: 2.2rem; font-weight: 900; color: var(--gold); }
-.spots small { font-size: 0.75rem; color: var(--gold); }
-.bonus-right p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px; }
 
 /* ==========================================================================
    CTA & CONTACT CARDS (FIXED EMAIL OVERFLOW)
