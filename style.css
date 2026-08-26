@@ -581,3 +581,26 @@ footer { background: #04060a; border-top: 1px solid var(--border-color); padding
     .footer-top { grid-template-columns: 1fr; }
     .footer-bottom { flex-direction: column; gap: 15px; text-align: center; }
 }
+/* Couleur par défaut des séparateurs (points) */
+.dot-sep {
+    color: var(--gold);
+    opacity: 0.5;
+}
+
+/* Style des mots qui vont s'allumer un par un */
+.glow-word {
+    color: #554411; /* Couleur dorée éteinte / sombre au départ */
+    animation: lightUp 1.8s infinite;
+}
+
+/* Animation qui fait passer le mot de "sombre" à "jaune doré lumineux" */
+@keyframes lightUp {
+    0%, 100% {
+        color: #554411;
+        text-shadow: none;
+    }
+    50% {
+        color: var(--gold); /* Jaune doré vif */
+        text-shadow: 0 0 10px rgba(212, 175, 55, 0.8); /* Effet lumineux (glow) */
+    }
+}
