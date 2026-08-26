@@ -168,13 +168,21 @@ ul {
     flex-shrink: 0;
 }
 
-.logo-text {
-    font-size: 0.95rem;     /* Réduit légèrement la taille pour que ça passe bien sur 2 lignes */
+.hero-title {
+    display: flex;
+    flex-direction: column; /* Force chaque span à aller à la ligne */
     font-weight: 800;
-    letter-spacing: 1px;
-    color: var(--gold);     /* Met le texte en jaune doré */
-    line-height: 1.2;       /* Rapproche un peu les deux lignes pour l'esthétique */
-    white-space: normal;    /* Permet au texte de passer à la ligne */
+    line-height: 1.2;
+}
+
+/* Première ligne en jaune doré */
+.hero-title .line-gold {
+    color: var(--gold); /* Utilise ton jaune doré (#d4af37) */
+}
+
+/* Deuxième ligne en blanc */
+.hero-title .line-white {
+    color: #ffffff;
 }
 
 .nav-menu {
