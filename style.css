@@ -585,3 +585,52 @@ footer { background: #04060a; border-top: 1px solid var(--border-color); padding
         text-shadow: 0 0 10px rgba(212, 175, 55, 0.8); /* Effet lumineux (glow) */
     }
 }
+
+/* ==========================================================================
+   BONUS SECTION / EARLY BIRD CARD
+   ========================================================================== */
+.bonus-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 40px;
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.bonus-card:hover {
+    border-color: var(--gold);
+}
+
+.bonus-card .section-label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.bonus-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    color: var(--text-main);
+}
+
+.bonus-card p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-bottom: 25px;
+}
+
+.bonus-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.bonus-list li {
+    font-size: 0.95rem;
+    color: var(--text-main);
+}
