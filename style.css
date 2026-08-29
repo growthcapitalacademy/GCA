@@ -175,7 +175,7 @@ ul {
     flex-direction: column; /* Force chaque span à aller à la ligne */
     font-family: 'Montserrat', sans-serif, -apple-system, BlinkMacSystemFont; /* Belle police moderne */
     font-weight: 800;
-    font-size: 3.5rem;        /* 🔍 Modifie cette taille pour l'agrandir ou le rapetisser à ta guise */
+    font-size: 3rem;        /* 🔍 Modifie cette taille pour l'agrandir ou le rapetisser à ta guise */
     line-height: 1.15;      /* Rapproche les deux lignes élégamment */
     letter-spacing: 1px;    /* Ajoute un léger espace entre les lettres pour le style */
 }
