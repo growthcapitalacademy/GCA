@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Growth Capital Academy</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .login-section {
+            padding: 180px 0 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+        }
+        .login-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 400px;
+        }
+        .login-card h2 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+        .login-card input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-main);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="GCA.png" alt="Growth Capital Academy" class="logo-img">
+                <h1 class="hero-title">
+                    <span class="line-gold">GROWTH CAPITAL</span>
+                    <span class="line-white">ACADEMY</span>
+                </h1>
+            </a>
+            <div class="nav-menu">
+                <a href="index.html">Home</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="login-section">
+        <div class="login-card">
+            <h2>Member Login</h2>
+            <form id="login-form">
+                <input type="email" id="email" placeholder="Email address" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit" class="btn btn-gold" style="width: 100%;">Sign In</button>
+            </form>
+            <p id="error-message" style="color: #ef4444; margin-top: 15px; font-size: 0.9rem;"></p>
+        </div>
+    </section>
+
+    <script type="module">
+        import { supabase } from './js/supabaseClient.js';
+
+        const form = document.getElementById('login-form');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const { error } = await supabase.auth.signInWithPassword({ email, password });
+
+            if (error) {
+                document.getElementById('error-message').innerText = error.message;
+            } else {
+                window.location.href = 'index.html'; // Redirection vers l'accueil une fois connecté
+            }
+        });
+    </script>
+</body>
+</html>
