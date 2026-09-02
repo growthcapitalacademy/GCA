@@ -723,7 +723,7 @@
 <script src="script.js"></script>
 
 <script type="module">
-    import { supabase } from './js/supabaseClient.js';
+    import { supabase } from './supabaseClient.js';
 
     const { data: { session } } = await supabase.auth.getSession();
     if (session) {
