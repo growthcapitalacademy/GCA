@@ -114,6 +114,31 @@
                 return;
             }
 
+// <--- METTEZ CE BLOC ICI EXACTEMENT : --->
+            if (data.user) {
+                // Utilisation explicite de l'ID retourné par data.user.id
+                const { error: profileError } = await supabase.from('profiles').insert([
+                    {
+                        id: data.user.id,
+                        first_name,
+                        last_name,
+                        country,
+                        phone,
+                        referral_source
+                    }
+                ]);
+
+                if (profileError) {
+                    alert("Profile error: " + profileError.message);
+                } else {
+                    alert("Sign up successful! You will be redirected to log in.");
+                    window.location.href = "login.html";
+                }
+            }
+            // <----------------------------------------->
+        });
+    </script>
+            
             if (data.user) {
                 // 2. Save details into the profiles table
                 const { error: profileError } = await supabase.from('profiles').insert([
