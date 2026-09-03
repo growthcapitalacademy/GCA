@@ -3,115 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Tableau de Bord - GCA</title>
+    <title>Log In - Growth Capital Academy</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .dashboard-container {
-            max-width: 1000px;
+        .auth-container {
+            max-width: 500px;
             margin: 120px auto 40px;
-            padding: 20px;
-        }
-        .welcome-card {
+            padding: 30px;
             background: var(--bg-card);
             border: 1px solid var(--border-color);
-            padding: 30px;
             border-radius: 12px;
-            margin-bottom: 30px;
         }
-        .progress-section {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            padding: 30px;
-            border-radius: 12px;
-            margin-bottom: 30px;
+        .form-group {
+            margin-bottom: 15px;
         }
-        .progress-bar-container {
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--gold);
+        }
+        .form-group input {
             width: 100%;
-            background: #222;
-            border-radius: 8px;
-            height: 20px;
-            overflow: hidden;
-            margin-top: 10px;
+            padding: 10px;
+            background: #111;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: #fff;
         }
-        .progress-bar {
-            width: 35%; /* Pourcentage d'exemple de progression */
-            height: 100%;
-            background: var(--gold);
-        }
-        .btn-course {
-            display: inline-block;
-            padding: 12px 24px;
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
             background: var(--gold);
             color: #000;
             font-weight: bold;
-            text-decoration: none;
+            border: none;
             border-radius: 6px;
-            margin-top: 15px;
+            cursor: pointer;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
 
-    <header class="navbar">
-        <div class="container nav-container">
-            <a href="index.html" class="logo">
-                <img src="GCA.png" alt="Growth Capital Academy" class="logo-img">
-                <h1 class="hero-title">
-                    <span class="line-gold">GROWTH CAPITAL</span>
-                    <span class="line-white">ACADEMY</span>
-                </h1>
-            </a>
-            <div class="nav-menu">
-                <button id="logout-btn" style="background:transparent; color:var(--gold); border:1px solid var(--gold); padding:8px 15px; border-radius:5px; cursor:pointer;">Se déconnecter</button>
+    <div class="auth-container">
+        <h2>Log In to Growth Capital Academy</h2>
+        <form id="login-form">
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" id="email" required>
             </div>
-        </div>
-    </header>
-
-    <div class="dashboard-container">
-        <div class="welcome-card">
-            <h2 style="color: var(--gold);">Bienvenue, <span id="user-name">Étudiant(e)</span> !</h2>
-            <p>Heureux de vous revoir dans votre espace membre Growth Capital Academy.</p>
-        </div>
-
-        <div class="progress-section">
-            <h3>Votre Progression dans le Programme</h3>
-            <p>Modules complétés : <strong>3 / 10</strong></p>
-            <div class="progress-bar-container">
-                <div class="progress-bar"></div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="password" required>
             </div>
-            
-            <h3 style="margin-top: 30px;">Prochaine session disponible</h3>
-            <p>Accédez dès maintenant au salon de trading en direct.</p>
-            <a href="live.html" class="btn-course">Recevoir / Rejoindre le cours en direct</a>
-        </div>
+            <button type="submit" class="btn-submit">Log In</button>
+        </form>
+        
+        <p style="text-align: center; margin-top: 15px; color: #aaa;">
+            Don't have an account? <a href="signup.html" style="color: var(--gold);">Sign up here</a>
+        </p>
     </div>
 
     <script type="module">
         import { supabase } from './supabaseClient.js';
 
-        // 1. Vérifier la sécurité de la page
-        const { data: { session } } = await supabase.auth.getSession();
-        if (!session) {
-            window.location.href = "login.html";
-        } else {
-            // 2. Charger les infos du profil utilisateur (Nom, Prénom)
-            const { data: profile } = await supabase
-                .from('profiles')
-                .select('first_name')
-                .eq('id', session.user.id)
-                .single();
+        const form = document.getElementById('login-form');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
 
-            if (profile && profile.first_name) {
-                document.getElementById('user-name').textContent = profile.first_name;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const { data, error } = await supabase.auth.signInWithPassword({
+                email,
+                password,
+            });
+
+            if (error) {
+                alert("Login error: " + error.message);
             } else {
-                document.getElementById('user-name').textContent = session.user.email;
+                // Redirection vers le dashboard après connexion réussie
+                window.location.href = "dashboard.html";
             }
-        }
-
-        // 3. Gestion de la déconnexion
-        document.getElementById('logout-btn').addEventListener('click', async () => {
-            await supabase.auth.signOut();
-            window.location.href = "login.html";
         });
     </script>
 </body>
