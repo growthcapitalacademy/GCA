@@ -99,9 +99,12 @@
             if (error) {
                 document.getElementById('error-message').innerText = error.message;
             } else {
+
+                alert("Login successful! Redirecting to dashboard..."); 
                 window.location.href = "dashboard.html";
             }
         });
     </script>
+                
 </body>
 </html>
