@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Growth Capital Academy</title>
+    <title>Log In - Growth Capital Academy</title>
     <link rel="stylesheet" href="style.css">
     <style>
         .login-section {
@@ -26,10 +26,18 @@
             margin-bottom: 20px;
             color: var(--gold);
         }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--gold);
+            font-size: 0.9rem;
+        }
         .login-card input {
             width: 100%;
             padding: 12px;
-            margin-bottom: 15px;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-color);
             border-radius: 6px;
@@ -56,13 +64,22 @@
 
     <section class="login-section">
         <div class="login-card">
-            <h2>Member Login</h2>
+            <h2>Log In</h2>
             <form id="login-form">
-                <input type="email" id="email" placeholder="Email address" required>
-                <input type="password" id="password" placeholder="Password" required>
-                <button type="submit" class="btn btn-gold" style="width: 100%;">Sign In</button>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn btn-gold" style="width: 100%; padding: 12px; font-weight: bold; cursor: pointer;">Sign In</button>
             </form>
             <p id="error-message" style="color: #ef4444; margin-top: 15px; font-size: 0.9rem;"></p>
+            <p style="text-align: center; margin-top: 20px; color: #aaa; font-size: 0.9rem;">
+                Don't have an account? <a href="signup.html" style="color: var(--gold);">Sign up here</a>
+            </p>
         </div>
     </section>
 
@@ -72,6 +89,8 @@
         const form = document.getElementById('login-form');
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
+            document.getElementById('error-message').innerText = "";
+
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
 
@@ -80,7 +99,7 @@
             if (error) {
                 document.getElementById('error-message').innerText = error.message;
             } else {
-              window.location.href = "dashboard.html"; // Redirection vers le dashbord une fois connecté
+                window.location.href = "dashboard.html";
             }
         });
     </script>
