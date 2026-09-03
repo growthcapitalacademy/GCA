@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription - Growth Capital Academy</title>
+    <title>Sign Up - Growth Capital Academy</title>
     <link rel="stylesheet" href="style.css">
     <style>
         .auth-container {
@@ -46,43 +46,46 @@
 <body>
 
     <div class="auth-container">
-        <h2>Créer votre compte GCA</h2>
+        <h2>Create GCA Account</h2>
         <form id="signup-form">
             <div class="form-group">
-                <label>Prénom</label>
+                <label>First Name</label>
                 <input type="text" id="first_name" required>
             </div>
             <div class="form-group">
-                <label>Nom</label>
+                <label>Last Name</label>
                 <input type="text" id="last_name" required>
             </div>
             <div class="form-group">
-                <label>Pays</label>
+                <label>Country</label>
                 <input type="text" id="country" required>
             </div>
             <div class="form-group">
-                <label>Numéro de téléphone</label>
+                <label>Phone Number</label>
                 <input type="tel" id="phone" required>
             </div>
             <div class="form-group">
-                <label>Adresse e-mail</label>
+                <label>Email Address</label>
                 <input type="email" id="email" required>
             </div>
             <div class="form-group">
-                <label>Mot de passe</label>
+                <label>Password</label>
                 <input type="password" id="password" required>
             </div>
             <div class="form-group">
-                <label>Comment avez-vous entendu parler de nous ?</label>
+                <label>How did you hear about us?</label>
                 <select id="referral_source">
-                    <option value="social_media">Réseaux sociaux</option>
-                    <option value="friend">Par un ami / Bouche à oreille</option>
-                    <option value="search">Recherche Google</option>
-                    <option value="other">Autre</option>
+                    <option value="social_media">Social Media</option>
+                    <option value="friend">Friend / Word of mouth</option>
+                    <option value="search">Google Search</option>
+                    <option value="other">Other</option>
                 </select>
             </div>
-            <button type="submit" class="btn-submit">S'inscrire</button>
+            <button type="submit" class="btn-submit">Sign Up</button>
         </form>
+        <p style="text-align: center; margin-top: 15px; color: #aaa;">
+            Already have an account? <a href="login.html" style="color: var(--gold);">Log in here</a>
+        </p>
     </div>
 
     <script type="module">
@@ -100,19 +103,19 @@
             const phone = document.getElementById('phone').value;
             const referral_source = document.getElementById('referral_source').value;
 
-            // 1. Inscription Auth Supabase
+            // 1. Supabase Auth Sign Up
             const { data, error } = await supabase.auth.signUp({
                 email,
                 password
             });
 
             if (error) {
-                alert("Erreur lors de l'inscription : " + error.message);
+                alert("Sign up error: " + error.message);
                 return;
             }
 
             if (data.user) {
-                // 2. Enregistrement des détails dans la table profiles
+                // 2. Save details into the profiles table
                 const { error: profileError } = await supabase.from('profiles').insert([
                     {
                         id: data.user.id,
@@ -125,9 +128,9 @@
                 ]);
 
                 if (profileError) {
-                    alert("Erreur profil : " + profileError.message);
+                    alert("Profile error: " + profileError.message);
                 } else {
-                    alert("Inscription réussie ! Vous allez être redirigé vers la connexion.");
+                    alert("Sign up successful! You will be redirected to log in.");
                     window.location.href = "login.html";
                 }
             }
