@@ -91,21 +91,6 @@
             100% { opacity: 1; }
         }
 
-        /* Style du logo dans la navbar */
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-
-        .site-logo-img {
-            width: 60px;
-            height: 60px;
-            object-fit: contain;
-            border-radius: 8px;
-        }
-
         /* Section de progression et des cours intégrée */
         .courses-section {
             background: var(--bg-card);
@@ -231,13 +216,16 @@
     <!-- Navigation -->
     <header class="navbar">
         <div class="container nav-container">
+
+            <!-- Structure du logo alignée exactement sur index.html -->
             <a href="dashboard.html" class="logo">
-                <img src="GCA.png" alt="GCA Logo" class="site-logo-img" onerror="this.style.display='none'">
-                <span class="hero-title">
+                <img src="GCA.png" alt="Growth Capital Academy" class="logo-img">
+                <h1 class="hero-title" style="font-size: inherit; margin: 0;">
                     <span class="line-gold">GROWTH CAPITAL</span>
                     <span class="line-white">ACADEMY</span>
-                </span>
+                </h1>
             </a>
+
             <div class="nav-menu">
                 <a href="index.html">Home</a>
                 <a href="dashboard.html" style="color: var(--gold);">Dashboard</a>
@@ -256,7 +244,6 @@
                 <h1 id="welcome-title">Welcome back, <span>Student</span></h1>
                 <p>Ready to build your financial future and master the markets today?</p>
             </div>
-            <!-- Bouton mis à jour pour pointer vers la section des cours en bas de page -->
             <a href="#curriculum-section" class="btn btn-gold">VIEW CURRICULUM ↓</a>
         </div>
 
