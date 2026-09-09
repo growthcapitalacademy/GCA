@@ -1,129 +1,261 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Member Dashboard - Growth Capital Academy</title>
+    <title>Tableau de Bord - Growth Capital Academy</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
     <style>
         .dashboard-container {
-            max-width: 900px;
-            margin: 140px auto 40px;
-            padding: 40px;
-            background: var(--bg-card);
+            max-width: 1200px;
+            margin: 120px auto 60px;
+            padding: 0 20px;
+        }
+
+        .category-block {
+            margin-bottom: 50px;
+        }
+
+        .category-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .phase-banner {
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card-hover) 100%);
             border: 1px solid var(--border-color);
             border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
         }
-        .dashboard-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 20px;
+
+        .phase-banner.featured {
+            border-color: var(--gold);
+            background: linear-gradient(180deg, rgba(212, 175, 55, 0.08) 0%, var(--bg-card) 100%);
         }
-        .dashboard-header h2 {
-            color: var(--gold);
-            font-family: 'Playfair Display', serif;
-        }
-        .progress-box {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-color);
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-        }
-        .btn-logout {
-            background: transparent;
-            color: var(--gold);
-            border: 1px solid var(--gold);
-            padding: 8px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        .btn-logout:hover {
+
+        .phase-tag-badge {
+            display: inline-block;
             background: var(--gold);
-            color: #000;
+            color: var(--bg-dark);
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .phase-banner h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .phase-banner p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Barre de navigation du dashboard -->
+    <!-- Navigation -->
     <header class="navbar">
         <div class="container nav-container">
-            <a href="index.html" class="logo">
-                <img src="GCA.png" alt="Growth Capital Academy" class="logo-img">
-                <h1 class="hero-title">
+            <a href="dashboard.html" class="logo">
+                <span class="hero-title">
                     <span class="line-gold">GROWTH CAPITAL</span>
                     <span class="line-white">ACADEMY</span>
-                </h1>
+                </span>
             </a>
             <div class="nav-menu">
-                <a href="index.html">Home</a>
-                <button id="logout-btn" class="btn-logout">Log Out</button>
+                <a href="dashboard.html">Tableau de bord</a>
+                <a href="index.html" class="nav-button">Déconnexion</a>
             </div>
+            <button class="menu-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
 
     <!-- Contenu du Dashboard -->
-    <div class="dashboard-container">
-        <div class="dashboard-header">
-            <div>
-                <h2>Welcome back, <span id="user-name">Member</span>!</h2>
-                <p style="color: #aaa; margin-top: 5px;">Access your live classes and track your financial growth journey.</p>
+    <main class="dashboard-container">
+        
+        <!-- En-tête du Tableau de Bord -->
+        <div class="section-heading" style="margin-bottom: 40px;">
+            <span class="section-label">Espace Étudiant</span>
+            <h2>Bienvenue sur votre <span>Cursus Officiel</span></h2>
+            <p>Retrouvez ci-dessous l'ensemble de vos modules répartis par catégories professionnelles, de la Phase 1 aux sessions pratiques de la Phase 2.</p>
+        </div>
+
+        <!-- Section PHASE 1 & 2 : Résumé / Banner -->
+        <div class="phase-banner">
+            <span class="phase-tag-badge">Phase 1 & 2 - Aperçu Global</span>
+            <h3>Structure d'Apprentissage Complète</h3>
+            <p>Progressez à votre rythme à travers les fondements théoriques et appliquez vos compétences lors des sessions pratiques de trading et de gestion d'entreprise.</p>
+        </div>
+
+        <!-- CATÉGORIE : Finance Fundamentals -->
+        <div class="category-block">
+            <h3 class="category-title">Finance Fundamentals</h3>
+            <div class="courses-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">01</div>
+                    <h3>Bases de la Finance</h3>
+                    <p>Comprendre la valeur temps de l'argent et les concepts financiers clés.</p>
+                    <a href="watch-course.html?id=fin-1" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Voir le cours</a>
+                </div>
             </div>
         </div>
 
-        <!-- Suivi de progression -->
-        <div class="progress-box">
-            <h3 style="color: var(--gold); margin-bottom: 10px;">Your Progress</h3>
-            <p style="font-size: 1.2rem; font-weight: bold;">Completed Classes: <span id="progress-count" style="color: var(--gold);">0</span> / 10</p>
+        <!-- CATÉGORIE : Economy -->
+        <div class="category-block">
+            <h3 class="category-title">Economy</h3>
+            <div class="courses-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">02</div>
+                    <h3>Macro & Microéconomie</h3>
+                    <p>Analyser l'impact des banques centrales et des indicateurs économiques.</p>
+                    <a href="watch-course.html?id=eco-1" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Voir le cours</a>
+                </div>
+            </div>
         </div>
 
-        <!-- Accès au Live / Cours -->
-        <div style="background: rgba(212, 175, 55, 0.05); border: 1px solid var(--gold); padding: 30px; border-radius: 12px; text-align: center;">
-            <h3 style="color: var(--gold); margin-bottom: 15px;">Live Session Access</h3>
-            <p style="margin-bottom: 20px; color: #ccc;">Your next live session is ready. Click below to enter the live classroom.</p>
-            <a href="#" class="btn btn-gold" style="padding: 12px 30px; text-decoration: none; font-weight: bold; border-radius: 6px; display: inline-block;">Join Live Session</a>
+        <!-- CATÉGORIE : Accounting -->
+        <div class="category-block">
+            <h3 class="category-title">Accounting</h3>
+            <div class="courses-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">03</div>
+                    <h3>Comptabilité d'Entreprise</h3>
+                    <p>Lire un bilan, un compte de résultat et analyser la santé financière.</p>
+                    <a href="watch-course.html?id=acc-1" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Voir le cours</a>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <!-- Script de protection de session, affichage du nom et déconnexion -->
-    <script type="module">
-        import { supabase } from './supabaseClient.js';
+        <!-- CATÉGORIE : Entrepreneurial -->
+        <div class="category-block">
+            <h3 class="category-title">Entrepreneurial</h3>
+            <div class="courses-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">04</div>
+                    <h3>Fondation de Start-up</h3>
+                    <p>De l'idée à la structuration d'un modèle économique viable.</p>
+                    <a href="watch-course.html?id=ent-1" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Voir le cours</a>
+                </div>
+            </div>
+        </div>
 
-        // 1. Vérification de la session (Sécurité)
-        const { data: { session }, error: sessionError } = await supabase.auth.getSession();
-        if (!session || sessionError) {
-            window.location.href = "login.html";
-        } else {
-            // 2. Récupération des données du profil (Nom, Prénom...)
-            const user = session.user;
-            const { data: profile, error } = await supabase
-                .from('profiles')
-                .select('first_name')
-                .eq('id', user.id)
-                .single();
+        <!-- CATÉGORIE : Marketing -->
+        <div class="category-block">
+            <h3 class="category-title">Marketing</h3>
+            <div class="courses-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">05</div>
+                    <h3>Stratégies d'Acquisition</h3>
+                    <p>Maîtriser le positionnement de marque et l'acquisition client moderne.</p>
+                    <a href="watch-course.html?id=mkt-1" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Voir le cours</a>
+                </div>
+            </div>
+        </div>
 
-            if (profile && profile.first_name) {
-                document.getElementById('user-name').innerText = profile.first_name;
-            } else {
-                document.getElementById('user-name').innerText = user.email.split('@')[0];
-            }
-        }
+        <!-- CATÉGORIE : Business Psychology -->
+        <div class="category-block">
+            <h3 class="category-title">Business Psychology</h3>
+            <div class="courses-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">06</div>
+                    <h3>Psychologie de la Décision</h3>
+                    <p>Comprendre les biais cognitifs en affaires et en investissement.</p>
+                    <a href="watch-course.html?id=psy-1" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Voir le cours</a>
+                </div>
+            </div>
+        </div>
 
-        // 3. Gestion de la déconnexion avec message de confirmation
-        const logoutBtn = document.getElementById('logout-btn');
-        if (logoutBtn) {
-            logoutBtn.addEventListener('click', async () => {
-                const userConfirmed = confirm("Are you sure you want to log out?");
-                if (userConfirmed) {
-                    await supabase.auth.signOut();
-                    alert("You have been successfully logged out.");
-                    window.location.href = "login.html";
-                }
+        <!-- CATÉGORIE : Trading (Intègre la Phase 2 Pro Trading) -->
+        <div class="category-block">
+            <h3 class="category-title">Trading</h3>
+            <div class="courses-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">07</div>
+                    <h3>Analyse Technique & Graphique</h3>
+                    <p>Lecture des tendances, structures de prix et indicateurs clés.</p>
+                    <a href="watch-course.html?id=trd-1" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Voir le cours</a>
+                </div>
+                
+                <!-- Carte dédiée Phase 2 : Professional Trading -->
+                <div class="benefit-card featured" style="border-color: var(--gold);">
+                    <div class="popular">POPULAR</div>
+                    <div class="benefit-icon" style="color: var(--gold);">02</div>
+                    <h3>PHASE 2 : Professional Trading</h3>
+                    <p style="color: var(--gold); font-weight: 700; margin-bottom: 10px;">6 WEEKS — $75USD / WEEK</p>
+                    <p>Apply your knowledge through practical market sessions, risk management, strategy development, and coaching.</p>
+                    <ul class="check-list" style="margin-top: 15px; margin-bottom: 20px;">
+                        <li>Live Market Analysis</li>
+                        <li>Practical Trading Sessions</li>
+                        <li>Coaching Support</li>
+                        <li>Risk Management Practice</li>
+                    </ul>
+                    <a href="watch-course.html?id=phase2-pro" class="btn btn-gold" style="width: 100%; font-size: 0.85rem;">Accéder à la Phase 2</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- CATÉGORIE : Business Laws -->
+        <div class="category-block">
+            <h3 class="category-title">Business Laws</h3>
+            <div class="courses-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">08</div>
+                    <h3>Cadre Juridique des Affaires</h3>
+                    <p>Bases légales, contrats commerciaux et conformité d'entreprise.</p>
+                    <a href="watch-course.html?id=law-1" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Voir le cours</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- CATÉGORIE : Business Politics -->
+        <div class="category-block">
+            <h3 class="category-title">Business Politics</h3>
+            <div class="courses-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">09</div>
+                    <h3>Géopolitique & Stratégie d'Entreprise</h3>
+                    <p>Anticiper les mutations réglementaires et l'impact géopolitique mondial.</p>
+                    <a href="watch-course.html?id=pol-1" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Voir le cours</a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Script simple pour le menu hamburger mobile -->
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
             });
         }
     </script>
