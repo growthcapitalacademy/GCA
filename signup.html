@@ -114,7 +114,7 @@
                 return;
             }
 
-            // 2. Insertion directe des informations dans la table profiles
+           // 2. Insertion directe des informations dans la table profiles
             if (data.user) {
                 const { error: profileError } = await supabase.from('profiles').insert([
                     {
@@ -133,7 +133,7 @@
                 }
             }
 
-            alert("Sign up successful! You will be redirected to log in.");
+            // Redirection directe sans popup d'alerte
             window.location.href = "login.html";
         });
     </script>
