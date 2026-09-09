@@ -6,31 +6,22 @@
 
 /* ================= MOBILE MENU ================= */
 
-const menuButton =
-    document.getElementById("menuButton");
+const menuButton = document.getElementById("menuButton") || document.getElementById("hamburger-btn");
+const mobileMenu = document.getElementById("mobileMenu") || document.getElementById("nav-menu");
 
-const mobileMenu =
-    document.getElementById("mobileMenu");
-
-menuButton.addEventListener("click", () => {
-
-    mobileMenu.classList.toggle("active");
-
-});
-
-
-/* Close mobile menu when clicking a link */
-
-document.querySelectorAll(".mobile-menu a")
-    .forEach(link => {
-
-        link.addEventListener("click", () => {
-
-            mobileMenu.classList.remove("active");
-
-        });
-
+if (menuButton && mobileMenu) {
+    menuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("active");
     });
+
+    /* Close mobile menu when clicking a link */
+    const mobileLinks = mobileMenu.querySelectorAll("a") || document.querySelectorAll(".mobile-menu a");
+    mobileLinks.forEach(link => {
+        link.addEventListener("click", () => {
+            mobileMenu.classList.remove("active");
+        });
+    });
+}
 
 
 /* ================= SCROLL ANIMATION ================= */
