@@ -14,53 +14,80 @@
             padding: 0 20px;
         }
 
-        .welcome-professor {
-            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card-hover) 100%);
+        .welcome-banner {
+            background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 16px;
-            padding: 40px;
-            margin-bottom: 50px;
-            position: relative;
-        }
-
-        .welcome-professor h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-        }
-
-        .welcome-professor h2 span {
-            color: var(--gold);
-        }
-
-        .welcome-professor p {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            max-width: 800px;
-        }
-
-        .phase-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin: 40px 0 20px;
-            color: var(--text-main);
+            padding: 30px;
+            margin-bottom: 30px;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 15px;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
-        .phase-title span {
+        .welcome-banner h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        .welcome-banner h1 span {
             color: var(--gold);
-            font-size: 1rem;
-            letter-spacing: 2px;
-            font-family: 'Inter', sans-serif;
         }
 
-        .courses-grid {
+        .welcome-banner p {
+            color: var(--text-muted);
+        }
+
+        .dashboard-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
-            margin-bottom: 50px;
+        }
+
+        .card-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 25px;
+            transition: var(--transition);
+        }
+
+        .card-box:hover {
+            border-color: var(--gold);
+        }
+
+        .card-box h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .card-box p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .live-badge {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
         }
     </style>
 </head>
@@ -76,161 +103,87 @@
                 </span>
             </a>
             <div class="nav-menu">
-                <a href="index.html">Home</a>
-                <a href="dashboard.html">Dashboard</a>
-                <a href="index.html" class="nav-button">Sign Out</a>
+                <a href="dashboard.html" style="color: var(--gold);">Dashboard</a>
+                <a href="watch.html">Courses</a>
+                <!-- Bouton Live rajouté ici -->
+                <a href="live.html" style="color: var(--gold); font-weight: bold;">🔴 Live Sessions</a>
+                <button id="logout-btn" class="btn-outline" style="padding: 6px 15px; font-size: 0.9rem; cursor:pointer;">Log Out</button>
             </div>
-            <button class="menu-toggle" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </div>
     </header>
 
-    <!-- Main Dashboard Content -->
+    <!-- Dashboard Content -->
     <main class="dashboard-container">
         
-        <!-- Professor Welcome Box -->
-        <div class="welcome-professor">
-            <span class="section-label">Faculty Welcome</span>
-            <h2>Welcome back, <span>Scholar</span>.</h2>
-            <p>Your curriculum is fully deployed. Master each discipline systematically below. True wealth is built through rigor, consistency, and an ownership mindset. Select a module to launch your recorded session.</p>
+        <!-- Welcome Banner -->
+        <div class="welcome-banner">
+            <div>
+                <h1 id="welcome-title">Welcome back, <span>Student</span></h1>
+                <p>Ready to build your financial future and master the markets today?</p>
+            </div>
+            <a href="watch.html" class="btn btn-gold">RESUME LEARNING →</a>
         </div>
 
-        <!-- PHASE 1 : FOUNDATION & THEORY COURSES -->
-        <div class="phase-title">
-            PHASE 1 <span>FOUNDATION & THEORY</span>
-        </div>
+        <!-- Main Sections Grid -->
+        <div class="dashboard-grid">
 
-        <div class="courses-grid">
-            <!-- 1 -->
-            <div class="benefit-card">
-                <div class="benefit-icon">01</div>
-                <h3>Finance Fundamentals</h3>
-                <p>Understand the core time value of money, capital valuation, and financial logic.</p>
-                <a href="watch-course.html?course=finance-fundamentals" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Access Course</a>
+            <!-- Live Sessions Card (Remis en avant) -->
+            <div class="card-box">
+                <span class="live-badge">● LIVE ACCESS</span>
+                <h3>Live Trading & Coaching</h3>
+                <p>Join interactive live market sessions, Q&A with mentors, and real-time analytical breakdowns.</p>
+                <a href="live.html" class="btn btn-outline" style="width: 100%; text-align: center;">JOIN LIVE ROOM →</a>
             </div>
 
-            <!-- 2 -->
-            <div class="benefit-card">
-                <div class="benefit-icon">02</div>
-                <h3>Economy</h3>
-                <p>Analyze macro and microeconomic indicators, monetary policy, and market cycles.</p>
-                <a href="watch-course.html?course=economy" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Access Course</a>
+            <!-- Courses Card -->
+            <div class="card-box">
+                <h3>Pre-recorded Curriculum</h3>
+                <p>Access your modules on Finance Fundamentals, Trading Strategies, and Entrepreneurial Mindset.</p>
+                <a href="watch.html" class="btn btn-outline" style="width: 100%; text-align: center;">ACCESS COURSES →</a>
             </div>
 
-            <!-- 3 -->
-            <div class="benefit-card">
-                <div class="benefit-icon">03</div>
-                <h3>Accounting</h3>
-                <p>Master corporate balance sheets, income statements, and financial health auditing.</p>
-                <a href="watch-course.html?course=accounting" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Access Course</a>
+            <!-- Community / Support Card -->
+            <div class="card-box">
+                <h3>GCA Community & Support</h3>
+                <p>Connect with fellow entrepreneurs, reach out via WhatsApp, or contact support for guidance.</p>
+                <a href="index.html#contact" class="btn btn-outline" style="width: 100%; text-align: center;">CONTACT SUPPORT →</a>
             </div>
 
-            <!-- 4 -->
-            <div class="benefit-card">
-                <div class="benefit-icon">04</div>
-                <h3>Entrepreneurial</h3>
-                <p>Build viable business models from ideation to execution and scale.</p>
-                <a href="watch-course.html?course=entrepreneurial" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Access Course</a>
-            </div>
-
-            <!-- 5 -->
-            <div class="benefit-card">
-                <div class="benefit-icon">05</div>
-                <h3>Marketing</h3>
-                <p>Learn brand positioning, customer acquisition funnels, and modern scaling strategies.</p>
-                <a href="watch-course.html?course=marketing" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Access Course</a>
-            </div>
-
-            <!-- 6 -->
-            <div class="benefit-card">
-                <div class="benefit-icon">06</div>
-                <h3>Business Psychology</h3>
-                <p>Decode cognitive biases, emotional control, and high-stakes decision-making frameworks.</p>
-                <a href="watch-course.html?course=business-psychology" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Access Course</a>
-            </div>
-
-            <!-- 7 -->
-            <div class="benefit-card">
-                <div class="benefit-icon">07</div>
-                <h3>Trading</h3>
-                <p>Master technical analysis, asset price structure, and professional chart navigation.</p>
-                <a href="watch-course.html?course=trading" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Access Course</a>
-            </div>
-
-            <!-- 8 -->
-            <div class="benefit-card">
-                <div class="benefit-icon">08</div>
-                <h3>Business Laws</h3>
-                <p>Understand corporate legal frameworks, commercial contracts, and compliance rules.</p>
-                <a href="watch-course.html?course=business-laws" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Access Course</a>
-            </div>
-
-            <!-- 9 -->
-            <div class="benefit-card">
-                <div class="benefit-icon">09</div>
-                <h3>Business Politics</h3>
-                <p>Navigate geopolitical landscapes, regulatory changes, and macro-industrial strategy.</p>
-                <a href="watch-course.html?course=business-politics" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Access Course</a>
-            </div>
-        </div>
-
-        <!-- PHASE 2 : PROFESSIONAL TRADING -->
-        <div class="phase-title">
-            PHASE 2 <span>ADVANCED TRACK</span>
-        </div>
-
-        <div class="program-card featured reveal" style="max-width: 100%;">
-            <div class="popular">MOST POPULAR</div>
-            <div class="program-number">02</div>
-            <div class="program-top">
-                <span class="phase-tag">PHASE 2</span>
-                <h3>PROFESSIONAL TRADING</h3>
-                <div class="duration">6 WEEKS</div>
-                <div class="price">
-                    <sup>$</sup>75
-                    <small>USD / WEEK</small>
-                </div>
-            </div>
-
-            <p class="program-description">
-                Apply your knowledge through practical market sessions, risk management, strategy development, and coaching.
-            </p>
-
-            <div class="program-divider"></div>
-
-            <h4>STUDENTS WILL RECEIVE</h4>
-
-            <ul class="check-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 10px; margin-bottom: 30px;">
-                <li>Live Market Analysis</li>
-                <li>Practical Trading Sessions</li>
-                <li>Coaching Support</li>
-                <li>Strategy Development</li>
-                <li>Risk Management Practice</li>
-                <li>Real Market Experience</li>
-                <li>Professional Trading Guidance</li>
-                <li>Business Financing Assistance</li>
-                <li>Strategic Partnerships</li>
-                <li>Business Organization Support</li>
-            </ul>  
-
-            <a href="watch-course.html?phase=2" class="program-button" style="max-width: 300px;">
-                START PHASE 2 →
-            </a>
         </div>
 
     </main>
 
-    <!-- Mobile Menu Script -->
-    <script>
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navMenu = document.querySelector('.nav-menu');
+    <!-- Script Supabase pour authentification et nom dynamique -->
+    <script type="module">
+        import { supabase } from './supabaseClient.js';
 
-        if (menuToggle && navMenu) {
-            menuToggle.addEventListener('click', () => {
-                navMenu.classList.toggle('active');
+        // Vérification de la session utilisateur
+        const { data: { session } } = await supabase.auth.getSession();
+        
+        if (!session) {
+            // Si l'utilisateur n'est pas connecté, le rediriger vers la page de login
+            window.location.href = 'login.html';
+        } else {
+            // Récupérer le nom ou l'e-mail de l'utilisateur
+            const user = session.user;
+            // Si l'utilisateur a renseigné un nom dans ses métadonnées, on l'utilise, sinon on prend la partie avant le @ de l'e-mail
+            let displayName = user.user_metadata?.full_name || user.email.split('@')[0];
+            
+            // Mettre la première lettre en majuscule pour faire plus propre
+            displayName = displayName.charAt(0).toUpperCase() + displayName.slice(1);
+
+            document.getElementById('welcome-title').innerHTML = `Welcome back, <span>${displayName}</span>`;
+        }
+
+        // Gestion de la déconnexion
+        const logoutBtn = document.getElementById('logout-btn');
+        if(logoutBtn) {
+            logoutBtn.addEventListener('click', async () => {
+                const userConfirmed = confirm("Are you sure you want to log out?");
+                if (userConfirmed) {
+                    await supabase.auth.signOut();
+                    window.location.href = 'index.html';
+                }
             });
         }
     </script>
