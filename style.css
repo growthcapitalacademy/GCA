@@ -154,7 +154,7 @@ ul {
     justify-content: space-between;
 }
 
-/* Style de l'image du logo (Haut et Bas) */
+/* Style de l'image du logo */
 .logo {
     display: flex;
     align-items: center;
@@ -169,20 +169,19 @@ ul {
 }
 
 /* Style global du titre sur 2 lignes */
-
 .hero-title {
     display: flex;
-    flex-direction: column; /* Force chaque span à aller à la ligne */
-    font-family: 'Montserrat', sans-serif, -apple-system, BlinkMacSystemFont; /* Belle police moderne */
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif, -apple-system, BlinkMacSystemFont;
     font-weight: 800;
-    font-size: 2rem;        /* 🔍 Modifie cette taille pour l'agrandir ou le rapetisser à ta guise */
-    line-height: 1.15;      /* Rapproche les deux lignes élégamment */
-    letter-spacing: 1px;    /* Ajoute un léger espace entre les lettres pour le style */
+    font-size: 2rem;
+    line-height: 1.15;
+    letter-spacing: 1px;
 }
 
-/* Première ligne en jaune doré (#d4af37) */
+/* Première ligne en jaune doré */
 .hero-title .line-gold {
-    color: var(--gold); 
+    color: var(--gold);
 }
 
 /* Deuxième ligne en blanc */
@@ -463,7 +462,6 @@ ul {
 .program-button { display: block; width: 100%; text-align: center; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); color: var(--text-main); padding: 12px; border-radius: 8px; font-weight: 700; transition: var(--transition); }
 .program-card:hover .program-button { background: var(--gold); color: var(--bg-dark); border-color: var(--gold); }
 
-
 /* ==========================================================================
    CTA & CONTACT CARDS (FIXED EMAIL OVERFLOW)
    ========================================================================== */
@@ -484,7 +482,7 @@ ul {
     border-radius: 12px;
     transition: var(--transition);
     text-align: left;
-    overflow: hidden; /* Évite tout débordement de l'email */
+    overflow: hidden;
 }
 
 .contact-card:hover {
@@ -509,7 +507,7 @@ ul {
 .contact-card div {
     display: flex;
     flex-direction: column;
-    min-width: 0; /* Important pour que l'email long s'adapte bien */
+    min-width: 0;
 }
 
 .contact-card small {
@@ -523,7 +521,7 @@ ul {
     font-size: 0.9rem;
     font-weight: 700;
     color: var(--text-main);
-    word-break: break-all; /* Force la coupure propre de l'adresse e-mail */
+    word-break: break-all;
     overflow-wrap: break-word;
 }
 
@@ -541,48 +539,133 @@ footer { background: #04060a; border-top: 1px solid var(--border-color); padding
 .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.05); color: var(--text-muted); font-size: 0.85rem; }
 
 /* ==========================================================================
-   RESPONSIVE DESIGN
+   RESPONSIVE DESIGN & OPTIMIZED MOBILE LAYOUT
    ========================================================================== */
 @media (max-width: 992px) {
-    .hero-container { grid-template-columns: 1fr; text-align: center; gap: 60px; }
+    .hero-container { grid-template-columns: 1fr; text-align: center; gap: 40px; }
     .hero-buttons { justify-content: center; }
     .trust-row { justify-content: center; }
-    .why-grid { grid-template-columns: 1fr; gap: 40px; }
-    .bonus-card { grid-template-columns: 1fr; padding: 30px; }
     .footer-top { grid-template-columns: 1fr 1fr; gap: 30px; }
 }
 
 @media (max-width: 768px) {
-    .nav-menu, .nav-button { display: none; }
-    .menu-toggle { display: flex; }
-    .hero h1 { font-size: 2.5rem; }
-    .hero h1 em { font-size: 2rem; }
-    .section-heading h2 { font-size: 2rem; }
-    .cta-content h2 { font-size: 2.2rem; }
-    .footer-top { grid-template-columns: 1fr; }
-    .footer-bottom { flex-direction: column; gap: 15px; text-align: center; }
+    /* 1. Ajustement global de la barre de navigation et du logo pour ne rien écraser */
+    .navbar {
+        padding: 10px 0;
+    }
+    
+    .logo img.logo-img {
+        height: 55px; /* Logo adapté pour mobile */
+    }
+
+    .hero-title {
+        font-size: 1.1rem; /* Titre proportionné pour smartphone */
+    }
+
+    /* 2. Menu mobile déroulant interactif */
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(7, 9, 14, 0.98);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border-color);
+        padding: 20px;
+        text-align: center;
+        gap: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    }
+
+    .nav-menu.active {
+        display: flex !important;
+    }
+
+    .nav-menu a {
+        font-size: 1rem;
+    }
+
+    .nav-button {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    /* 3. Adaptation des espacements pour éviter les gros blocs vides */
+    .hero {
+        padding: 130px 0 60px;
+    }
+
+    .hero h1 { 
+        font-size: 2.2rem; 
+        line-height: 1.2;
+    }
+    
+    .hero h1 em { 
+        font-size: 1.8rem; 
+    }
+
+    .section {
+        padding: 60px 0;
+    }
+
+    .section-heading h2 { 
+        font-size: 1.8rem; 
+    }
+
+    .cta-content h2 { 
+        font-size: 1.8rem; 
+    }
+
+    /* 4. Sécurité des conteneurs pour éviter tout débordement sur les bords */
+    .container {
+        padding: 0 15px;
+    }
+
+    .login-card, .bonus-card, .program-card {
+        padding: 20px;
+    }
+
+    .footer-top { 
+        grid-template-columns: 1fr; 
+        gap: 30px;
+    }
+    
+    .footer-bottom { 
+        flex-direction: column; 
+        gap: 15px; 
+        text-align: center; 
+    }
 }
-/* Couleur par défaut des séparateurs (points) */
+
+/* ==========================================================================
+   EFFECTS & ANIMATIONS (DOTS & GLOW)
+   ========================================================================== */
 .dot-sep {
     color: var(--gold);
     opacity: 0.5;
 }
 
-/* Style des mots qui vont s'allumer un par un */
 .glow-word {
-    color: #554411; /* Couleur dorée éteinte / sombre au départ */
+    color: #554411;
     animation: lightUp 1.8s infinite;
 }
 
-/* Animation qui fait passer le mot de "sombre" à "jaune doré lumineux" */
 @keyframes lightUp {
     0%, 100% {
         color: #554411;
         text-shadow: none;
     }
     50% {
-        color: var(--gold); /* Jaune doré vif */
-        text-shadow: 0 0 10px rgba(212, 175, 55, 0.8); /* Effet lumineux (glow) */
+        color: var(--gold);
+        text-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
     }
 }
 
