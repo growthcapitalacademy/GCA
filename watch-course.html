@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visionnage du Cours - Growth Capital Academy</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        .watch-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            max-width: 1300px;
+            margin: 120px auto 60px;
+            padding: 0 20px;
+        }
+
+        .video-player-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* Ratio 16:9 */
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .video-wrapper iframe, .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .course-info h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .course-info p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .playlist-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 25px;
+            height: fit-content;
+        }
+
+        .playlist-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .playlist-items {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .playlist-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .playlist-item:hover, .playlist-item.active {
+            background: var(--bg-card-hover);
+            border-color: var(--gold);
+        }
+
+        .playlist-item span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .playlist-item strong {
+            font-size: 0.9rem;
+            display: block;
+        }
+
+        @media (max-width: 992px) {
+            .watch-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="dashboard.html" class="logo">
+                <span class="hero-title">
+                    <span class="line-gold">GROWTH CAPITAL</span>
+                    <span class="line-white">ACADEMY</span>
+                </span>
+            </a>
+            <div class="nav-menu">
+                <a href="dashboard.html">Tableau de bord</a>
+                <a href="index.html" class="nav-button">Déconnexion</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenu Principal du Cours -->
+    <main class="watch-container">
+        <!-- Lecteur Vidéo + Détails -->
+        <div class="video-player-section">
+            <div class="video-wrapper">
+                <!-- Remplace l'URL src par ton lien de vidéo (YouTube, Vimeo ou lien direct) -->
+                <iframe id="course-video" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+            </div>
+            <div class="course-info">
+                <h1 id="course-title">Titre du Module / Cours en cours</h1>
+                <p id="course-desc">Description détaillée du contenu de ce module préenregistré. Apprenez les concepts clés et appliquez-les directement dans vos exercices pratiques.</p>
+            </div>
+        </div>
+
+        <!-- Liste des chapitres / modules préenregistrés -->
+        <aside class="playlist-section">
+            <h3>Programme du Cursus</h3>
+            <div class="playlist-items">
+                <div class="playlist-item active" onclick="changeVideo('https://www.youtube.com/embed/dQw4w9WgXcQ', 'Module 1 : Fondamentaux de la Finance', 'Maîtrisez les bases indispensables de la gestion financière et des marchés.')">
+                    <div class="benefit-icon" style="font-size:1rem; margin:0; width:30px; height:30px; display:flex; align-items:center; justify-content:center;">01</div>
+                    <div>
+                        <strong>Module 1 : Fondamentaux</strong>
+                        <span>15 min</span>
+                    </div>
+                </div>
+
+                <div class="playlist-item" onclick="changeVideo('https://www.youtube.com/embed/dQw4w9WgXcQ', 'Module 2 : Stratégies de Trading', 'Apprenez à analyser les graphiques et à gérer les risques de marché.')">
+                    <div class="benefit-icon" style="font-size:1rem; margin:0; width:30px; height:30px; display:flex; align-items:center; justify-content:center;">02</div>
+                    <div>
+                        <strong>Module 2 : Stratégies de Trading</strong>
+                        <span>25 min</span>
+                    </div>
+                </div>
+
+                <div class="playlist-item" onclick="changeVideo('https://www.youtube.com/embed/dQw4w9WgXcQ', 'Module 3 : Mindset Entrepreneurial', 'Développez une vision à long terme et un esprit d\'investisseur aguerri.')">
+                    <div class="benefit-icon" style="font-size:1rem; margin:0; width:30px; height:30px; display:flex; align-items:center; justify-content:center;">03</div>
+                    <div>
+                        <strong>Module 3 : Mindset</strong>
+                        <span>20 min</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Script simple pour changer dynamiquement de vidéo au clic -->
+    <script>
+        function changeVideo(videoUrl, title, description) {
+            document.getElementById('course-video').src = videoUrl;
+            document.getElementById('course-title').innerText = title;
+            document.getElementById('course-desc').innerText = description;
+            
+            // Gestion visuelle de la sélection active dans la liste
+            document.querySelectorAll('.playlist-item').forEach(item => item.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
