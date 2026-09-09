@@ -48,30 +48,30 @@
         <div class="live-header-bar">
             <h2 id="class-title" style="color: var(--gold);">Live Trading Session</h2>
         </div>
-        <!-- Espace vidéo Jitsi -->
+        <!-- Espace vidéo Jitsi intégré directement -->
         <div id="jitsi-container"></div>
     </div>
 
     <!-- Script officiel de Jitsi Meet -->
     <script src="https://8x8.vc/external_api.js"></script>
     <script type="module">
-        // 1. Importation de Supabase en tout premier
+        // 1. Importation de Supabase
         import { supabase } from './supabaseClient.js';
 
         // 2. Vérification de la session utilisateur
         const { data: { session } } = await supabase.auth.getSession();
         
         if (!session) {
-            // S'il n'est pas connecté, on le renvoie vers la page de login
+            // S'il n'est pas connecté, redirection vers la page de login
             window.location.href = "login.html";
         } else {
-            // S'il est connecté, on charge le live Jitsi
+            // S'il est connecté, chargement du live Jitsi sur la page
 
             // Récupérer le paramètre du salon dans l'URL (ex: live.html?room=phase1)
             const urlParams = new URLSearchParams(window.location.search);
             const roomName = urlParams.get('room') || 'gca-general-room';
 
-            // Identifier l'utilisateur connecté pour afficher son nom dans la visio
+            // Identifier l'utilisateur connecté pour afficher son nom/email dans la visio
             const { data: { user } } = await supabase.auth.getUser();
             let displayName = "GCA Student";
             if (user) {
