@@ -73,6 +73,11 @@
                 <div class="form-group">
                     <label>Password</label>
                     <input type="password" id="password" required>
+                    
+                    <!-- Lien Mot de passe oublié ajouté ici -->
+                    <div style="text-align: right; margin-top: 6px;">
+                        <a href="forgot-password.html" style="color: var(--gold); font-size: 0.85rem; text-decoration: none;">Forgot your password?</a>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-gold" style="width: 100%; padding: 12px; font-weight: bold; cursor: pointer;">Sign In</button>
             </form>
@@ -102,9 +107,8 @@
                 // Redirection instantanée sans popup d'alerte "OK"
                 window.location.href = "dashboard.html";
             }
-           
         });
     </script>
-                
+        
 </body>
 </html>
