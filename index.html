@@ -26,26 +26,26 @@
     <div class="container nav-container">
 
         <a href="#home" class="logo">
-  
             <img src="GCA.png" alt="Growth Capital Academy" class="logo-img">
-  <h1 class="hero-title">
-    <span class="line-gold">GROWTH CAPITAL</span>
-    <span class="line-white">ACADEMY</span>
-  </h1>
-       </a>
+            <h1 class="hero-title">
+                <span class="line-gold">GROWTH CAPITAL</span>
+                <span class="line-white">ACADEMY</span>
+            </h1>
+        </a>
 
         <nav class="nav-menu">
-    <a href="#home">Home</a>
-    <a href="#about">Why GCA</a>
-    <a href="#program">Program</a>
-    <a href="#contact">Contact</a>
-    <a href="login.html" id="auth-link" style="color: var(--gold);">Login</a>
-    <a href="signup.html" id="signup-btn" class="btn-gold" style="margin-left: 10px; padding: 8px 15px; background: var(--gold); color: #000; border-radius: 5px; text-decoration: none; font-weight: bold;">JOIN GCA</a>
-    <button id="logout-btn" style="display: none; background: transparent; color: var(--gold); border: 1px solid var(--gold); padding: 8px 15px; border-radius: 5px; cursor:pointer;">Logout</button>
-    </div>
-</nav>
-
-
+            <a href="#home">Home</a>
+            <a href="#about">Why GCA</a>
+            <a href="#program">Program</a>
+            <a href="#contact">Contact</a>
+            
+            <!-- Lien Dashboard (Caché par défaut, affiché si connecté via le script Supabase) -->
+            <a href="dashboard.html" id="dashboard-link" style="display: none; color: var(--gold); font-weight: bold;">Dashboard</a>
+            
+            <a href="login.html" id="auth-link" style="color: var(--gold);">Login</a>
+            <a href="signup.html" id="signup-btn" class="btn-gold" style="margin-left: 10px; padding: 8px 15px; background: var(--gold); color: #000; border-radius: 5px; text-decoration: none; font-weight: bold;">JOIN GCA</a>
+            <button id="logout-btn" style="display: none; background: transparent; color: var(--gold); border: 1px solid var(--gold); padding: 8px 15px; border-radius: 5px; cursor:pointer;">Logout</button>
+        </nav>
 
         <button class="menu-toggle" id="menuToggle">
             <span></span>
@@ -93,13 +93,13 @@
         <div class="hero-content">
 
           <div class="hero-badge">
-    <span class="pulse"></span>
-    <span class="glow-word" style="animation-delay: 0s;">FINANCE</span> 
-    <span class="dot-sep">•</span>
-    <span class="glow-word" style="animation-delay: 0.6s;">TRADING</span> 
-    <span class="dot-sep">•</span>
-    <span class="glow-word" style="animation-delay: 1.2s;">ENTREPRENEURSHIP</span>
-</div>
+            <span class="pulse"></span>
+            <span class="glow-word" style="animation-delay: 0s;">FINANCE</span> 
+            <span class="dot-sep">•</span>
+            <span class="glow-word" style="animation-delay: 0.6s;">TRADING</span> 
+            <span class="dot-sep">•</span>
+            <span class="glow-word" style="animation-delay: 1.2s;">ENTREPRENEURSHIP</span>
+        </div>
 
             <h2>
                 FROM BEGINNER TO
@@ -311,8 +311,6 @@
         <div class="section-heading center reveal">
 
             <span class="section-label">THE ROADMAP</span>
-
-
 
             <p>
                 A structured journey designed to build financial knowledge,
@@ -729,14 +727,19 @@
 
     const { data: { session } } = await supabase.auth.getSession();
     if (session) {
+        // Cache le bouton Login
         const authLink = document.getElementById('auth-link');
         if(authLink) authLink.style.display = 'none';
 
+        // Affiche le lien Dashboard
+        const dashboardLink = document.getElementById('dashboard-link');
+        if(dashboardLink) dashboardLink.style.display = 'inline-block';
+
+        // Gère le bouton Logout
         const logoutBtn = document.getElementById('logout-btn');
         if(logoutBtn) {
             logoutBtn.style.display = 'inline-block';
             logoutBtn.addEventListener('click', async () => {
-                // Demande une confirmation avant de déconnecter
                 const userConfirmed = confirm("Are you sure you want to log out?");
 
                 if (userConfirmed) {
