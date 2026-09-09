@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tableau de Bord - Growth Capital Academy</title>
+    <title>Student Dashboard - Growth Capital Academy</title>
     <link rel="stylesheet" href="style.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
@@ -14,62 +14,11 @@
             padding: 0 20px;
         }
 
-        .category-block {
-            margin-bottom: 50px;
-        }
-
-        .category-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: var(--gold);
-            margin-bottom: 20px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 8px;
-        }
-
-        .courses-grid {
+        .dashboard-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .phase-banner {
-            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card-hover) 100%);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 30px;
-            margin-bottom: 40px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .phase-banner.featured {
-            border-color: var(--gold);
-            background: linear-gradient(180deg, rgba(212, 175, 55, 0.08) 0%, var(--bg-card) 100%);
-        }
-
-        .phase-tag-badge {
-            display: inline-block;
-            background: var(--gold);
-            color: var(--bg-dark);
-            font-size: 0.75rem;
-            font-weight: 800;
-            padding: 4px 12px;
-            border-radius: 20px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-
-        .phase-banner h3 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-bottom: 10px;
-        }
-
-        .phase-banner p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
         }
     </style>
 </head>
@@ -85,8 +34,8 @@
                 </span>
             </a>
             <div class="nav-menu">
-                <a href="dashboard.html">Tableau de bord</a>
-                <a href="index.html" class="nav-button">Déconnexion</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="index.html" class="nav-button">Sign Out</a>
             </div>
             <button class="menu-toggle" aria-label="Menu">
                 <span></span>
@@ -96,159 +45,103 @@
         </div>
     </header>
 
-    <!-- Contenu du Dashboard -->
+    <!-- Main Dashboard Content -->
     <main class="dashboard-container">
         
-        <!-- En-tête du Tableau de Bord -->
-        <div class="section-heading" style="margin-bottom: 40px;">
-            <span class="section-label">Espace Étudiant</span>
-            <h2>Bienvenue sur votre <span>Cursus Officiel</span></h2>
-            <p>Retrouvez ci-dessous l'ensemble de vos modules répartis par catégories professionnelles, de la Phase 1 aux sessions pratiques de la Phase 2.</p>
+        <!-- Dashboard Header -->
+        <div class="section-heading center">
+            <span class="section-label">Student Area</span>
+            <h2>Your Official <span>Curriculum</span></h2>
+            <p>Access your modules, track your progress, and dive into your recorded learning sessions below.</p>
         </div>
 
-        <!-- Section PHASE 1 & 2 : Résumé / Banner -->
-        <div class="phase-banner">
-            <span class="phase-tag-badge">Phase 1 & 2 - Aperçu Global</span>
-            <h3>Structure d'Apprentissage Complète</h3>
-            <p>Progressez à votre rythme à travers les fondements théoriques et appliquez vos compétences lors des sessions pratiques de trading et de gestion d'entreprise.</p>
-        </div>
+        <!-- Programs Grid (Phase 1 & Phase 2) -->
+        <div class="dashboard-grid">
 
-        <!-- CATÉGORIE : Finance Fundamentals -->
-        <div class="category-block">
-            <h3 class="category-title">Finance Fundamentals</h3>
-            <div class="courses-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">01</div>
-                    <h3>Bases de la Finance</h3>
-                    <p>Comprendre la valeur temps de l'argent et les concepts financiers clés.</p>
-                    <a href="watch-course.html?id=fin-1" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Voir le cours</a>
+            <!-- PHASE 1 -->
+            <div class="program-card reveal">
+                <div class="program-number">01</div>
+                <div class="program-top">
+                    <span class="phase-tag">PHASE 1</span>
+                    <h3>FOUNDATION & THEORY</h3>
+                    <div class="duration">SELF-PACED</div>
+                    <div class="price">
+                        <sup>$</sup>0
+                        <small>INCLUDED</small>
+                    </div>
                 </div>
+
+                <p class="program-description">
+                    Master the essential pillars of modern finance, market economics, and strategic business fundamentals.
+                </p>
+
+                <div class="program-divider"></div>
+
+                <h4>CORE MODULES</h4>
+
+                <ul class="check-list">
+                    <li>Finance Fundamentals</li>
+                    <li>Economy</li>
+                    <li>Accounting</li>
+                    <li>Entrepreneurial</li>
+                    <li>Marketing</li>
+                    <li>Business Psychology</li>
+                    <li>Trading</li>
+                    <li>Business Laws</li>
+                    <li>Business Politics</li>
+                </ul>
+
+                <a href="watch-course.html?phase=1" class="program-button">
+                    START PHASE 1 →
+                </a>
             </div>
-        </div>
 
-        <!-- CATÉGORIE : Economy -->
-        <div class="category-block">
-            <h3 class="category-title">Economy</h3>
-            <div class="courses-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">02</div>
-                    <h3>Macro & Microéconomie</h3>
-                    <p>Analyser l'impact des banques centrales et des indicateurs économiques.</p>
-                    <a href="watch-course.html?id=eco-1" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Voir le cours</a>
+            <!-- PHASE 2 -->
+            <div class="program-card featured reveal">
+                <div class="popular">MOST POPULAR</div>
+                <div class="program-number">02</div>
+                <div class="program-top">
+                    <span class="phase-tag">PHASE 2</span>
+                    <h3>PROFESSIONAL TRADING</h3>
+                    <div class="duration">6 WEEKS</div>
+                    <div class="price">
+                        <sup>$</sup>75
+                        <small>USD / WEEK</small>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- CATÉGORIE : Accounting -->
-        <div class="category-block">
-            <h3 class="category-title">Accounting</h3>
-            <div class="courses-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">03</div>
-                    <h3>Comptabilité d'Entreprise</h3>
-                    <p>Lire un bilan, un compte de résultat et analyser la santé financière.</p>
-                    <a href="watch-course.html?id=acc-1" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Voir le cours</a>
-                </div>
-            </div>
-        </div>
+                <p class="program-description">
+                    Apply your knowledge through practical market sessions, risk management, strategy development, and coaching.
+                </p>
 
-        <!-- CATÉGORIE : Entrepreneurial -->
-        <div class="category-block">
-            <h3 class="category-title">Entrepreneurial</h3>
-            <div class="courses-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">04</div>
-                    <h3>Fondation de Start-up</h3>
-                    <p>De l'idée à la structuration d'un modèle économique viable.</p>
-                    <a href="watch-course.html?id=ent-1" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Voir le cours</a>
-                </div>
-            </div>
-        </div>
+                <div class="program-divider"></div>
 
-        <!-- CATÉGORIE : Marketing -->
-        <div class="category-block">
-            <h3 class="category-title">Marketing</h3>
-            <div class="courses-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">05</div>
-                    <h3>Stratégies d'Acquisition</h3>
-                    <p>Maîtriser le positionnement de marque et l'acquisition client moderne.</p>
-                    <a href="watch-course.html?id=mkt-1" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Voir le cours</a>
-                </div>
-            </div>
-        </div>
+                <h4>STUDENTS WILL RECEIVE</h4>
 
-        <!-- CATÉGORIE : Business Psychology -->
-        <div class="category-block">
-            <h3 class="category-title">Business Psychology</h3>
-            <div class="courses-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">06</div>
-                    <h3>Psychologie de la Décision</h3>
-                    <p>Comprendre les biais cognitifs en affaires et en investissement.</p>
-                    <a href="watch-course.html?id=psy-1" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Voir le cours</a>
-                </div>
-            </div>
-        </div>
+                <ul class="check-list">
+                    <li>Live Market Analysis</li>
+                    <li>Practical Trading Sessions</li>
+                    <li>Coaching Support</li>
+                    <li>Strategy Development</li>
+                    <li>Risk Management Practice</li>
+                    <li>Real Market Experience</li>
+                    <li>Professional Trading Guidance</li>
+                    <li>Business Financing Assistance</li>
+                    <li>Strategic Partnerships</li>
+                    <li>Business Organization Support</li>
+                </ul>  
 
-        <!-- CATÉGORIE : Trading (Intègre la Phase 2 Pro Trading) -->
-        <div class="category-block">
-            <h3 class="category-title">Trading</h3>
-            <div class="courses-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">07</div>
-                    <h3>Analyse Technique & Graphique</h3>
-                    <p>Lecture des tendances, structures de prix et indicateurs clés.</p>
-                    <a href="watch-course.html?id=trd-1" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Voir le cours</a>
-                </div>
-                
-                <!-- Carte dédiée Phase 2 : Professional Trading -->
-                <div class="benefit-card featured" style="border-color: var(--gold);">
-                    <div class="popular">POPULAR</div>
-                    <div class="benefit-icon" style="color: var(--gold);">02</div>
-                    <h3>PHASE 2 : Professional Trading</h3>
-                    <p style="color: var(--gold); font-weight: 700; margin-bottom: 10px;">6 WEEKS — $75USD / WEEK</p>
-                    <p>Apply your knowledge through practical market sessions, risk management, strategy development, and coaching.</p>
-                    <ul class="check-list" style="margin-top: 15px; margin-bottom: 20px;">
-                        <li>Live Market Analysis</li>
-                        <li>Practical Trading Sessions</li>
-                        <li>Coaching Support</li>
-                        <li>Risk Management Practice</li>
-                    </ul>
-                    <a href="watch-course.html?id=phase2-pro" class="btn btn-gold" style="width: 100%; font-size: 0.85rem;">Accéder à la Phase 2</a>
-                </div>
-            </div>
-        </div>
+                <a href="watch-course.html?phase=2" class="program-button">
+                    START PHASE 2 →
+                </a>
 
-        <!-- CATÉGORIE : Business Laws -->
-        <div class="category-block">
-            <h3 class="category-title">Business Laws</h3>
-            <div class="courses-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">08</div>
-                    <h3>Cadre Juridique des Affaires</h3>
-                    <p>Bases légales, contrats commerciaux et conformité d'entreprise.</p>
-                    <a href="watch-course.html?id=law-1" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Voir le cours</a>
-                </div>
             </div>
-        </div>
 
-        <!-- CATÉGORIE : Business Politics -->
-        <div class="category-block">
-            <h3 class="category-title">Business Politics</h3>
-            <div class="courses-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">09</div>
-                    <h3>Géopolitique & Stratégie d'Entreprise</h3>
-                    <p>Anticiper les mutations réglementaires et l'impact géopolitique mondial.</p>
-                    <a href="watch-course.html?id=pol-1" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Voir le cours</a>
-                </div>
-            </div>
         </div>
 
     </main>
 
-    <!-- Script simple pour le menu hamburger mobile -->
+    <!-- Mobile Menu Script -->
     <script>
         const menuToggle = document.querySelector('.menu-toggle');
         const navMenu = document.querySelector('.nav-menu');
