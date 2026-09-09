@@ -14,11 +14,53 @@
             padding: 0 20px;
         }
 
-        .dashboard-grid {
+        .welcome-professor {
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card-hover) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .welcome-professor h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .welcome-professor h2 span {
+            color: var(--gold);
+        }
+
+        .welcome-professor p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 800px;
+        }
+
+        .phase-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin: 40px 0 20px;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .phase-title span {
+            color: var(--gold);
+            font-size: 1rem;
+            letter-spacing: 2px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .courses-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            gap: 25px;
+            margin-bottom: 50px;
         }
     </style>
 </head>
@@ -49,95 +91,134 @@
     <!-- Main Dashboard Content -->
     <main class="dashboard-container">
         
-        <!-- Dashboard Header -->
-        <div class="section-heading center">
-            <span class="section-label">Student Area</span>
-            <h2>Your Official <span>Curriculum</span></h2>
-            <p>Access your modules, track your progress, and dive into your recorded learning sessions below.</p>
+        <!-- Professor Welcome Box -->
+        <div class="welcome-professor">
+            <span class="section-label">Faculty Welcome</span>
+            <h2>Welcome back, <span>Scholar</span>.</h2>
+            <p>Your curriculum is fully deployed. Master each discipline systematically below. True wealth is built through rigor, consistency, and an ownership mindset. Select a module to launch your recorded session.</p>
         </div>
 
-        <!-- Programs Grid (Phase 1 & Phase 2) -->
-        <div class="dashboard-grid">
+        <!-- PHASE 1 : FOUNDATION & THEORY COURSES -->
+        <div class="phase-title">
+            PHASE 1 <span>FOUNDATION & THEORY</span>
+        </div>
 
-            <!-- PHASE 1 -->
-            <div class="program-card reveal">
-                <div class="program-number">01</div>
-                <div class="program-top">
-                    <span class="phase-tag">PHASE 1</span>
-                    <h3>FOUNDATION & THEORY</h3>
-                    <div class="duration">SELF-PACED</div>
-                    <div class="price">
-                        <sup>$</sup>0
-                        <small>INCLUDED</small>
-                    </div>
-                </div>
-
-                <p class="program-description">
-                    Master the essential pillars of modern finance, market economics, and strategic business fundamentals.
-                </p>
-
-                <div class="program-divider"></div>
-
-                <h4>CORE MODULES</h4>
-
-                <ul class="check-list">
-                    <li>Finance Fundamentals</li>
-                    <li>Economy</li>
-                    <li>Accounting</li>
-                    <li>Entrepreneurial</li>
-                    <li>Marketing</li>
-                    <li>Business Psychology</li>
-                    <li>Trading</li>
-                    <li>Business Laws</li>
-                    <li>Business Politics</li>
-                </ul>
-
-                <a href="watch-course.html?phase=1" class="program-button">
-                    START PHASE 1 →
-                </a>
+        <div class="courses-grid">
+            <!-- 1 -->
+            <div class="benefit-card">
+                <div class="benefit-icon">01</div>
+                <h3>Finance Fundamentals</h3>
+                <p>Understand the core time value of money, capital valuation, and financial logic.</p>
+                <a href="watch-course.html?course=finance-fundamentals" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Access Course</a>
             </div>
 
-            <!-- PHASE 2 -->
-            <div class="program-card featured reveal">
-                <div class="popular">MOST POPULAR</div>
-                <div class="program-number">02</div>
-                <div class="program-top">
-                    <span class="phase-tag">PHASE 2</span>
-                    <h3>PROFESSIONAL TRADING</h3>
-                    <div class="duration">6 WEEKS</div>
-                    <div class="price">
-                        <sup>$</sup>75
-                        <small>USD / WEEK</small>
-                    </div>
-                </div>
-
-                <p class="program-description">
-                    Apply your knowledge through practical market sessions, risk management, strategy development, and coaching.
-                </p>
-
-                <div class="program-divider"></div>
-
-                <h4>STUDENTS WILL RECEIVE</h4>
-
-                <ul class="check-list">
-                    <li>Live Market Analysis</li>
-                    <li>Practical Trading Sessions</li>
-                    <li>Coaching Support</li>
-                    <li>Strategy Development</li>
-                    <li>Risk Management Practice</li>
-                    <li>Real Market Experience</li>
-                    <li>Professional Trading Guidance</li>
-                    <li>Business Financing Assistance</li>
-                    <li>Strategic Partnerships</li>
-                    <li>Business Organization Support</li>
-                </ul>  
-
-                <a href="watch-course.html?phase=2" class="program-button">
-                    START PHASE 2 →
-                </a>
-
+            <!-- 2 -->
+            <div class="benefit-card">
+                <div class="benefit-icon">02</div>
+                <h3>Economy</h3>
+                <p>Analyze macro and microeconomic indicators, monetary policy, and market cycles.</p>
+                <a href="watch-course.html?course=economy" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Access Course</a>
             </div>
 
+            <!-- 3 -->
+            <div class="benefit-card">
+                <div class="benefit-icon">03</div>
+                <h3>Accounting</h3>
+                <p>Master corporate balance sheets, income statements, and financial health auditing.</p>
+                <a href="watch-course.html?course=accounting" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Access Course</a>
+            </div>
+
+            <!-- 4 -->
+            <div class="benefit-card">
+                <div class="benefit-icon">04</div>
+                <h3>Entrepreneurial</h3>
+                <p>Build viable business models from ideation to execution and scale.</p>
+                <a href="watch-course.html?course=entrepreneurial" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Access Course</a>
+            </div>
+
+            <!-- 5 -->
+            <div class="benefit-card">
+                <div class="benefit-icon">05</div>
+                <h3>Marketing</h3>
+                <p>Learn brand positioning, customer acquisition funnels, and modern scaling strategies.</p>
+                <a href="watch-course.html?course=marketing" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Access Course</a>
+            </div>
+
+            <!-- 6 -->
+            <div class="benefit-card">
+                <div class="benefit-icon">06</div>
+                <h3>Business Psychology</h3>
+                <p>Decode cognitive biases, emotional control, and high-stakes decision-making frameworks.</p>
+                <a href="watch-course.html?course=business-psychology" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Access Course</a>
+            </div>
+
+            <!-- 7 -->
+            <div class="benefit-card">
+                <div class="benefit-icon">07</div>
+                <h3>Trading</h3>
+                <p>Master technical analysis, asset price structure, and professional chart navigation.</p>
+                <a href="watch-course.html?course=trading" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Access Course</a>
+            </div>
+
+            <!-- 8 -->
+            <div class="benefit-card">
+                <div class="benefit-icon">08</div>
+                <h3>Business Laws</h3>
+                <p>Understand corporate legal frameworks, commercial contracts, and compliance rules.</p>
+                <a href="watch-course.html?course=business-laws" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Access Course</a>
+            </div>
+
+            <!-- 9 -->
+            <div class="benefit-card">
+                <div class="benefit-icon">09</div>
+                <h3>Business Politics</h3>
+                <p>Navigate geopolitical landscapes, regulatory changes, and macro-industrial strategy.</p>
+                <a href="watch-course.html?course=business-politics" class="btn btn-gold" style="width: 100%; margin-top: 20px; padding: 10px; font-size: 0.85rem;">Access Course</a>
+            </div>
+        </div>
+
+        <!-- PHASE 2 : PROFESSIONAL TRADING -->
+        <div class="phase-title">
+            PHASE 2 <span>ADVANCED TRACK</span>
+        </div>
+
+        <div class="program-card featured reveal" style="max-width: 100%;">
+            <div class="popular">MOST POPULAR</div>
+            <div class="program-number">02</div>
+            <div class="program-top">
+                <span class="phase-tag">PHASE 2</span>
+                <h3>PROFESSIONAL TRADING</h3>
+                <div class="duration">6 WEEKS</div>
+                <div class="price">
+                    <sup>$</sup>75
+                    <small>USD / WEEK</small>
+                </div>
+            </div>
+
+            <p class="program-description">
+                Apply your knowledge through practical market sessions, risk management, strategy development, and coaching.
+            </p>
+
+            <div class="program-divider"></div>
+
+            <h4>STUDENTS WILL RECEIVE</h4>
+
+            <ul class="check-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 10px; margin-bottom: 30px;">
+                <li>Live Market Analysis</li>
+                <li>Practical Trading Sessions</li>
+                <li>Coaching Support</li>
+                <li>Strategy Development</li>
+                <li>Risk Management Practice</li>
+                <li>Real Market Experience</li>
+                <li>Professional Trading Guidance</li>
+                <li>Business Financing Assistance</li>
+                <li>Strategic Partnerships</li>
+                <li>Business Organization Support</li>
+            </ul>  
+
+            <a href="watch-course.html?phase=2" class="program-button" style="max-width: 300px;">
+                START PHASE 2 →
+            </a>
         </div>
 
     </main>
