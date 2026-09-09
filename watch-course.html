@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visionnage du Cours - Growth Capital Academy</title>
+    <title>Course Watcher - Growth Capital Academy</title>
     <link rel="stylesheet" href="style.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
@@ -121,50 +121,50 @@
                 </span>
             </a>
             <div class="nav-menu">
-                <a href="dashboard.html">Tableau de bord</a>
-                <a href="index.html" class="nav-button">Déconnexion</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="index.html" class="nav-button">Log Out</a>
             </div>
         </div>
     </header>
 
-    <!-- Contenu Principal du Cours -->
+    <!-- Main Course Content -->
     <main class="watch-container">
-        <!-- Lecteur Vidéo + Détails -->
+        <!-- Video Player + Details -->
         <div class="video-player-section">
             <div class="video-wrapper">
-                <!-- Remplace l'URL src par ton lien de vidéo (YouTube, Vimeo ou lien direct) -->
+                <!-- Replace src URL with your video link (YouTube, Vimeo, or direct link) -->
                 <iframe id="course-video" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
             </div>
             <div class="course-info">
-                <h1 id="course-title">Titre du Module / Cours en cours</h1>
-                <p id="course-desc">Description détaillée du contenu de ce module préenregistré. Apprenez les concepts clés et appliquez-les directement dans vos exercices pratiques.</p>
+                <h1 id="course-title">Current Module / Course Title</h1>
+                <p id="course-desc">Detailed description of this pre-recorded module's content. Learn key concepts and apply them directly in your practice exercises.</p>
             </div>
         </div>
 
-        <!-- Liste des chapitres / modules préenregistrés -->
+        <!-- Pre-recorded Chapters / Modules Playlist -->
         <aside class="playlist-section">
-            <h3>Programme du Cursus</h3>
+            <h3>Curriculum</h3>
             <div class="playlist-items">
-                <div class="playlist-item active" onclick="changeVideo('https://www.youtube.com/embed/dQw4w9WgXcQ', 'Module 1 : Fondamentaux de la Finance', 'Maîtrisez les bases indispensables de la gestion financière et des marchés.')">
+                <div class="playlist-item active" onclick="changeVideo('https://www.youtube.com/embed/dQw4w9WgXcQ', 'Module 1: Finance Fundamentals', 'Master the essential basics of financial management and markets.')">
                     <div class="benefit-icon" style="font-size:1rem; margin:0; width:30px; height:30px; display:flex; align-items:center; justify-content:center;">01</div>
                     <div>
-                        <strong>Module 1 : Fondamentaux</strong>
+                        <strong>Module 1: Fundamentals</strong>
                         <span>15 min</span>
                     </div>
                 </div>
 
-                <div class="playlist-item" onclick="changeVideo('https://www.youtube.com/embed/dQw4w9WgXcQ', 'Module 2 : Stratégies de Trading', 'Apprenez à analyser les graphiques et à gérer les risques de marché.')">
+                <div class="playlist-item" onclick="changeVideo('https://www.youtube.com/embed/dQw4w9WgXcQ', 'Module 2: Trading Strategies', 'Learn how to analyze charts and manage market risks.')">
                     <div class="benefit-icon" style="font-size:1rem; margin:0; width:30px; height:30px; display:flex; align-items:center; justify-content:center;">02</div>
                     <div>
-                        <strong>Module 2 : Stratégies de Trading</strong>
+                        <strong>Module 2: Trading Strategies</strong>
                         <span>25 min</span>
                     </div>
                 </div>
 
-                <div class="playlist-item" onclick="changeVideo('https://www.youtube.com/embed/dQw4w9WgXcQ', 'Module 3 : Mindset Entrepreneurial', 'Développez une vision à long terme et un esprit d\'investisseur aguerri.')">
+                <div class="playlist-item" onclick="changeVideo('https://www.youtube.com/embed/dQw4w9WgXcQ', 'Module 3: Entrepreneurial Mindset', 'Develop a long-term vision and a seasoned investor mindset.')">
                     <div class="benefit-icon" style="font-size:1rem; margin:0; width:30px; height:30px; display:flex; align-items:center; justify-content:center;">03</div>
                     <div>
-                        <strong>Module 3 : Mindset</strong>
+                        <strong>Module 3: Mindset</strong>
                         <span>20 min</span>
                     </div>
                 </div>
@@ -172,14 +172,14 @@
         </aside>
     </main>
 
-    <!-- Script simple pour changer dynamiquement de vidéo au clic -->
+    <!-- Simple script to dynamically change the video on click -->
     <script>
         function changeVideo(videoUrl, title, description) {
             document.getElementById('course-video').src = videoUrl;
             document.getElementById('course-title').innerText = title;
             document.getElementById('course-desc').innerText = description;
             
-            // Gestion visuelle de la sélection active dans la liste
+            // Visual management of the active selection in the list
             document.querySelectorAll('.playlist-item').forEach(item => item.classList.remove('active'));
             event.currentTarget.classList.add('active');
         }
