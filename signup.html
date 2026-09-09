@@ -103,24 +103,34 @@
             const phone = document.getElementById('phone').value;
             const referral_source = document.getElementById('referral_source').value;
 
-            // Inscription Supabase avec transmission des métadonnées optionnelles
+            // 1. Inscription classique via Auth
             const { data, error } = await supabase.auth.signUp({
                 email,
-                password,
-                options: {
-                    data: {
-                        first_name,
-                        last_name,
-                        country,
-                        phone,
-                        referral_source
-                    }
-                }
+                password
             });
 
             if (error) {
                 alert("Sign up error: " + error.message);
                 return;
+            }
+
+            // 2. Insertion directe des informations dans la table profiles
+            if (data.user) {
+                const { error: profileError } = await supabase.from('profiles').insert([
+                    {
+                        id: data.user.id,
+                        email: email,
+                        first_name: first_name,
+                        last_name: last_name,
+                        country: country,
+                        phone: phone,
+                        referral_source: referral_source
+                    }
+                ]);
+
+                if (profileError) {
+                    console.error("Profile insertion warning:", profileError.message);
+                }
             }
 
             alert("Sign up successful! You will be redirected to log in.");
