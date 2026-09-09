@@ -103,10 +103,19 @@
             const phone = document.getElementById('phone').value;
             const referral_source = document.getElementById('referral_source').value;
 
-            // 1. Supabase Auth Sign Up
+            // Inscription Supabase avec transmission des métadonnées optionnelles
             const { data, error } = await supabase.auth.signUp({
                 email,
-                password
+                password,
+                options: {
+                    data: {
+                        first_name,
+                        last_name,
+                        country,
+                        phone,
+                        referral_source
+                    }
+                }
             });
 
             if (error) {
@@ -114,27 +123,8 @@
                 return;
             }
 
-            // 2. Save details into the profiles table
-            if (data.user) {
-                const { error: profileError } = await supabase.from('profiles').insert([
-                    {
-                        id: data.user.id,
-                        first_name,
-                        last_name,
-                        country,
-                        phone,
-                        referral_source,
-                        updated_at: new Date() // Ajouté pour correspondre à votre table Supabase
-                    }
-                ]);
-
-                if (profileError) {
-                    alert("Profile error: " + profileError.message);
-                } else {
-                    alert("Sign up successful! You will be redirected to log in.");
-                    window.location.href = "login.html";
-                }
-            }
+            alert("Sign up successful! You will be redirected to log in.");
+            window.location.href = "login.html";
         });
     </script>
 </body>
