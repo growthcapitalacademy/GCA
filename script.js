@@ -6,8 +6,8 @@
 
 /* ================= MOBILE MENU ================= */
 
-const menuButton = document.getElementById("menuButton") || document.getElementById("hamburger-btn");
-const mobileMenu = document.getElementById("mobileMenu") || document.getElementById("nav-menu");
+const menuButton = document.getElementById("menuToggle"); // Corrigé de menuButton à menuToggle
+const mobileMenu = document.querySelector(".nav-menu"); // Utilise directement .nav-menu comme conteneur
 
 if (menuButton && mobileMenu) {
     menuButton.addEventListener("click", () => {
@@ -15,14 +15,12 @@ if (menuButton && mobileMenu) {
     });
 
     /* Close mobile menu when clicking a link */
-    const mobileLinks = mobileMenu.querySelectorAll("a") || document.querySelectorAll(".mobile-menu a");
-    mobileLinks.forEach(link => {
+    mobileMenu.querySelectorAll("a").forEach(link => {
         link.addEventListener("click", () => {
             mobileMenu.classList.remove("active");
         });
     });
 }
-
 
 /* ================= SCROLL ANIMATION ================= */
 
