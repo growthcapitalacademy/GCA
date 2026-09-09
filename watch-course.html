@@ -34,7 +34,7 @@
             margin-bottom: 20px;
         }
 
-        .video-wrapper iframe, .video-wrapper video {
+        .video-wrapper iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -52,6 +52,7 @@
         .course-info p {
             color: var(--text-muted);
             font-size: 0.95rem;
+            margin-bottom: 20px;
         }
 
         .playlist-section {
@@ -83,13 +84,21 @@
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            cursor: pointer;
             transition: var(--transition);
         }
 
-        .playlist-item:hover, .playlist-item.active {
+        .playlist-item.unlocked {
+            cursor: pointer;
+        }
+
+        .playlist-item.unlocked:hover, .playlist-item.active {
             background: var(--bg-card-hover);
             border-color: var(--gold);
+        }
+
+        .playlist-item.locked {
+            opacity: 0.4;
+            cursor: not-allowed;
         }
 
         .playlist-item span {
@@ -122,7 +131,8 @@
             </a>
             <div class="nav-menu">
                 <a href="dashboard.html">Dashboard</a>
-                <a href="index.html" class="nav-button">Log Out</a>
+                <a href="live.html" style="color: var(--gold); font-weight: bold;">🔴 Live Sessions</a>
+                <a href="index.html" class="nav-button" id="logout-btn">Log Out</a>
             </div>
         </div>
     </header>
@@ -132,20 +142,22 @@
         <!-- Video Player + Details -->
         <div class="video-player-section">
             <div class="video-wrapper">
-                <!-- Replace src URL with your video link (YouTube, Vimeo, or direct link) -->
                 <iframe id="course-video" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
             </div>
             <div class="course-info">
-                <h1 id="course-title">Current Module / Course Title</h1>
-                <p id="course-desc">Detailed description of this pre-recorded module's content. Learn key concepts and apply them directly in your practice exercises.</p>
+                <h1 id="course-title">Module 1 : Fundamentals</h1>
+                <p id="course-desc">Master the essential basics of financial management and markets.</p>
+                <button id="complete-btn" class="btn btn-gold" onclick="completeCurrentModule()">Mark as Completed & Unlock Next →</button>
             </div>
         </div>
 
-        <!-- Pre-recorded Chapters / Modules Playlist -->
+        <!-- Curriculum Playlist -->
         <aside class="playlist-section">
             <h3>Curriculum</h3>
             <div class="playlist-items">
-                <div class="playlist-item active" onclick="changeVideo('https://www.youtube.com/embed/dQw4w9WgXcQ', 'Module 1: Finance Fundamentals', 'Master the essential basics of financial management and markets.')">
+                
+                <!-- Module 1 -->
+                <div id="item-1" class="playlist-item unlocked active" onclick="switchModule(1, 'https://www.youtube.com/embed/dQw4w9WgXcQ', 'Module 1 : Fundamentals', 'Master the essential basics of financial management and markets.')">
                     <div class="benefit-icon" style="font-size:1rem; margin:0; width:30px; height:30px; display:flex; align-items:center; justify-content:center;">01</div>
                     <div>
                         <strong>Module 1: Fundamentals</strong>
@@ -153,36 +165,140 @@
                     </div>
                 </div>
 
-                <div class="playlist-item" onclick="changeVideo('https://www.youtube.com/embed/dQw4w9WgXcQ', 'Module 2: Trading Strategies', 'Learn how to analyze charts and manage market risks.')">
-                    <div class="benefit-icon" style="font-size:1rem; margin:0; width:30px; height:30px; display:flex; align-items:center; justify-content:center;">02</div>
+                <!-- Module 2 -->
+                <div id="item-2" class="playlist-item locked" onclick="switchModule(2, 'https://www.youtube.com/embed/dQw4w9WgXcQ', 'Module 2 : Trading Strategies', 'Learn how to analyze charts and manage market risks.')">
+                    <div class="benefit-icon" style="font-size:1rem; margin:0; width:30px; height:30px; display:flex; align-items:center; justify-content:center;">🔒</div>
                     <div>
                         <strong>Module 2: Trading Strategies</strong>
                         <span>25 min</span>
                     </div>
                 </div>
 
-                <div class="playlist-item" onclick="changeVideo('https://www.youtube.com/embed/dQw4w9WgXcQ', 'Module 3: Entrepreneurial Mindset', 'Develop a long-term vision and a seasoned investor mindset.')">
-                    <div class="benefit-icon" style="font-size:1rem; margin:0; width:30px; height:30px; display:flex; align-items:center; justify-content:center;">03</div>
+                <!-- Module 3 -->
+                <div id="item-3" class="playlist-item locked" onclick="switchModule(3, 'https://www.youtube.com/embed/dQw4w9WgXcQ', 'Module 3 : Mindset', 'Develop a long-term vision and a seasoned investor mindset.')">
+                    <div class="benefit-icon" style="font-size:1rem; margin:0; width:30px; height:30px; display:flex; align-items:center; justify-content:center;">🔒</div>
                     <div>
                         <strong>Module 3: Mindset</strong>
                         <span>20 min</span>
                     </div>
                 </div>
+
             </div>
         </aside>
     </main>
 
-    <!-- Simple script to dynamically change the video on click -->
-    <script>
-        function changeVideo(videoUrl, title, description) {
+    <!-- Script de gestion et synchronisation Supabase -->
+    <script type="module">
+        import { supabase } from './supabaseClient.js';
+
+        let currentUser = null;
+        let currentModuleId = 1;
+        
+        // Par défaut, seul le module 1 est débloqué (le reste dépendra de la BDD)
+        let unlockedModules = {
+            1: true,
+            2: false,
+            3: false
+        };
+
+        // 1. Charger l'utilisateur et sa progression au démarrage
+        async function initPage() {
+            const { data: { session } } = await supabase.auth.getSession();
+            if (!session) {
+                window.location.href = 'login.html';
+                return;
+            }
+            currentUser = session.user;
+
+            // Récupérer la progression de l'utilisateur depuis Supabase
+            const { data, error } = await supabase
+                .from('user_progress')
+                .select('module_id')
+                .eq('user_id', currentUser.id);
+
+            if (!error && data) {
+                data.forEach(row => {
+                    let completedMod = row.module_id;
+                    let nextMod = completedMod + 1;
+                    
+                    // Si ce module a été complété, on débloque le suivant dans l'objet et visuellement
+                    if (unlockedModules[nextMod] !== undefined || nextMod <= 3) {
+                        unlockedModules[nextMod] = true;
+                        
+                        let item = document.getElementById('item-'.concat(nextMod));
+                        if (item) {
+                            item.classList.remove('locked');
+                            item.classList.add('unlocked');
+                            item.querySelector('.benefit-icon').innerText = "0".concat(nextMod);
+                        }
+                    }
+                });
+            }
+        }
+
+        initPage();
+
+        // Rendre les fonctions globales pour les attributs onclick du HTML
+        window.switchModule = function(id, videoUrl, title, description) {
+            if (!unlockedModules[id]) {
+                alert("Please complete the previous module to unlock this one!");
+                return;
+            }
+
+            currentModuleId = id;
+
             document.getElementById('course-video').src = videoUrl;
             document.getElementById('course-title').innerText = title;
             document.getElementById('course-desc').innerText = description;
-            
-            // Visual management of the active selection in the list
+
             document.querySelectorAll('.playlist-item').forEach(item => item.classList.remove('active'));
-            event.currentTarget.classList.add('active');
-        }
+            document.getElementById('item-' + id).classList.add('active');
+            
+            const btn = document.getElementById('complete-btn');
+            if(id === 3) {
+                btn.innerText = "Finish Course 🎓";
+            } else {
+                btn.innerText = "Mark as Completed & Unlock Next →";
+            }
+        };
+
+        window.completeCurrentModule = async function() {
+            if (!currentUser) return;
+
+            // Enregistrer dans Supabase que le module actuel est complété
+            const { error } = await supabase
+                .from('user_progress')
+                .upsert({ user_id: currentUser.id, module_id: currentModuleId, completed: true }, { onConflict: 'user_id, module_id' });
+
+            if (error) {
+                console.error("Error saving progress:", error);
+                alert("Error saving your progress. Please try again.");
+                return;
+            }
+
+            let nextModuleId = currentModuleId + 1;
+
+            if (unlockedModules[nextModuleId] !== undefined) {
+                unlockedModules[nextModuleId] = true;
+                
+                let nextItem = document.getElementById('item-' + nextModuleId);
+                nextItem.classList.remove('locked');
+                nextItem.classList.add('unlocked');
+                nextItem.querySelector('.benefit-icon').innerText = "0" + nextModuleId;
+
+                alert(`Module ${currentModuleId} completed! Module ${nextModuleId} is now unlocked.`);
+                nextItem.click();
+            } else {
+                alert("Congratulations! You have completed all available modules.");
+            }
+        };
+
+        // Gestion de la déconnexion
+        document.getElementById('logout-btn').addEventListener('click', async (e) => {
+            e.preventDefault();
+            await supabase.auth.signOut();
+            window.location.href = 'index.html';
+        });
     </script>
 </body>
 </html>
