@@ -744,8 +744,6 @@
 
                 if (userConfirmed) {
                     await supabase.auth.signOut();
-                    alert("You have been successfully logged out.");
-                    window.location.reload();
                 }
             });
         }
