@@ -45,6 +45,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
+            margin-bottom: 40px;
         }
 
         .card-box {
@@ -89,6 +90,140 @@
             50% { opacity: 0.5; }
             100% { opacity: 1; }
         }
+
+        /* Style du logo dans la navbar */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .site-logo-img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        /* Section de progression et des cours intégrée */
+        .courses-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+        }
+
+        .courses-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        .courses-section > p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .course-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .course-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            transition: var(--transition);
+        }
+
+        .course-item.unlocked {
+            border-color: var(--border-color);
+        }
+
+        .course-item.unlocked:hover {
+            border-color: var(--gold);
+            background: var(--bg-card-hover);
+        }
+
+        .course-item.locked {
+            opacity: 0.4;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .course-info-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .course-number {
+            width: 40px;
+            height: 40px;
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .course-item.locked .course-number {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            border-color: var(--border-color);
+        }
+
+        .course-details h4 {
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+        .course-details p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        .course-action {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .status-pill {
+            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .status-pill.completed {
+            background: rgba(46, 204, 113, 0.1);
+            color: #2ecc71;
+            border: 1px solid rgba(46, 204, 113, 0.3);
+        }
+
+        .status-pill.in-progress {
+            background: rgba(241, 196, 15, 0.1);
+            color: #f1c40f;
+            border: 1px solid rgba(241, 196, 15, 0.3);
+        }
+
+        .status-pill.locked {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+        }
     </style>
 </head>
 <body>
@@ -97,15 +232,16 @@
     <header class="navbar">
         <div class="container nav-container">
             <a href="dashboard.html" class="logo">
+                <!-- Logo mis à jour avec GCA.png -->
+                <img src="GCA.png" alt="GCA Logo" class="site-logo-img" onerror="this.style.display='none'">
                 <span class="hero-title">
                     <span class="line-gold">GROWTH CAPITAL</span>
                     <span class="line-white">ACADEMY</span>
                 </span>
             </a>
             <div class="nav-menu">
+                <a href="index.html">Home</a>
                 <a href="dashboard.html" style="color: var(--gold);">Dashboard</a>
-                <a href="watch.html">Courses</a>
-                <!-- Bouton Live rajouté ici -->
                 <a href="live.html" style="color: var(--gold); font-weight: bold;">🔴 Live Sessions</a>
                 <button id="logout-btn" class="btn-outline" style="padding: 6px 15px; font-size: 0.9rem; cursor:pointer;">Log Out</button>
             </div>
@@ -121,61 +257,158 @@
                 <h1 id="welcome-title">Welcome back, <span>Student</span></h1>
                 <p>Ready to build your financial future and master the markets today?</p>
             </div>
-            <a href="watch.html" class="btn btn-gold">RESUME LEARNING →</a>
+            <a href="live.html" class="btn btn-gold">JOIN LIVE ROOM →</a>
         </div>
 
         <!-- Main Sections Grid -->
         <div class="dashboard-grid">
 
-            <!-- Live Sessions Card (Remis en avant) -->
+            <!-- Live Sessions Card -->
             <div class="card-box">
                 <span class="live-badge">● LIVE ACCESS</span>
                 <h3>Live Trading & Coaching</h3>
                 <p>Join interactive live market sessions, Q&A with mentors, and real-time analytical breakdowns.</p>
-                <a href="live.html" class="btn btn-outline" style="width: 100%; text-align: center;">JOIN LIVE ROOM →</a>
-            </div>
-
-            <!-- Courses Card -->
-            <div class="card-box">
-                <h3>Pre-recorded Curriculum</h3>
-                <p>Access your modules on Finance Fundamentals, Trading Strategies, and Entrepreneurial Mindset.</p>
-                <a href="watch.html" class="btn btn-outline" style="width: 100%; text-align: center;">ACCESS COURSES →</a>
+                <a href="live.html" class="btn btn-outline" style="width: 100%; text-align: center; display: block; box-sizing: border-box;">JOIN LIVE ROOM →</a>
             </div>
 
             <!-- Community / Support Card -->
             <div class="card-box">
                 <h3>GCA Community & Support</h3>
                 <p>Connect with fellow entrepreneurs, reach out via WhatsApp, or contact support for guidance.</p>
-                <a href="index.html#contact" class="btn btn-outline" style="width: 100%; text-align: center;">CONTACT SUPPORT →</a>
+                <a href="index.html#contact" class="btn btn-outline" style="width: 100%; text-align: center; display: block; box-sizing: border-box;">CONTACT SUPPORT →</a>
             </div>
 
         </div>
 
+        <!-- Section de progression et de tous les cours intégrée -->
+        <section class="courses-section">
+            <h2>Curriculum & Progress Tracker</h2>
+            <p>Complete each module sequentially. Unlocking happens automatically as you progress through your learning path.</p>
+            
+            <div class="course-list">
+                
+                <!-- Module 1 -->
+                <div id="course-item-1" class="course-item unlocked" onclick="openCourse(1)">
+                    <div class="course-info-left">
+                        <div class="course-number">01</div>
+                        <div class="course-details">
+                            <h4>Module 1 : Fundamentals</h4>
+                            <p>Master the essential basics of financial management and markets. (15 min)</p>
+                        </div>
+                    </div>
+                    <div class="course-action">
+                        <span id="status-1" class="status-pill in-progress">Available</span>
+                        <button class="btn btn-outline" style="padding: 6px 15px; font-size: 0.85rem;">Watch →</button>
+                    </div>
+                </div>
+
+                <!-- Module 2 -->
+                <div id="course-item-2" class="course-item locked" onclick="openCourse(2)">
+                    <div class="course-info-left">
+                        <div class="course-number" id="num-2">🔒</div>
+                        <div class="course-details">
+                            <h4>Module 2 : Trading Strategies</h4>
+                            <p>Learn how to analyze charts and manage market risks. (25 min)</p>
+                        </div>
+                    </div>
+                    <div class="course-action">
+                        <span id="status-2" class="status-pill locked">Locked</span>
+                    </div>
+                </div>
+
+                <!-- Module 3 -->
+                <div id="course-item-3" class="course-item locked" onclick="openCourse(3)">
+                    <div class="course-info-left">
+                        <div class="course-number" id="num-3">🔒</div>
+                        <div class="course-details">
+                            <h4>Module 3 : Mindset</h4>
+                            <p>Develop a long-term vision and a seasoned investor mindset. (20 min)</p>
+                        </div>
+                    </div>
+                    <div class="course-action">
+                        <span id="status-3" class="status-pill locked">Locked</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
     </main>
 
-    <!-- Script Supabase pour authentification et nom dynamique -->
+    <!-- Script Supabase & Gestion de la progression -->
     <script type="module">
         import { supabase } from './supabaseClient.js';
 
-        // Vérification de la session utilisateur
-        const { data: { session } } = await supabase.auth.getSession();
-        
-        if (!session) {
-            // Si l'utilisateur n'est pas connecté, le rediriger vers la page de login
-            window.location.href = 'login.html';
-        } else {
-            // Récupérer le nom ou l'e-mail de l'utilisateur
-            const user = session.user;
-            // Si l'utilisateur a renseigné un nom dans ses métadonnées, on l'utilise, sinon on prend la partie avant le @ de l'e-mail
-            let displayName = user.user_metadata?.full_name || user.email.split('@')[0];
-            
-            // Mettre la première lettre en majuscule pour faire plus propre
-            displayName = displayName.charAt(0).toUpperCase() + displayName.slice(1);
+        let currentUser = null;
+        let unlockedModules = {
+            1: true,
+            2: false,
+            3: false
+        };
 
+        async function initDashboard() {
+            const { data: { session } } = await supabase.auth.getSession();
+            
+            if (!session) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            currentUser = session.user;
+            
+            let displayName = currentUser.user_metadata?.full_name || currentUser.email.split('@')[0];
+            displayName = displayName.charAt(0).toUpperCase() + displayName.slice(1);
             document.getElementById('welcome-title').innerHTML = `Welcome back, <span>${displayName}</span>`;
+
+            const { data, error } = await supabase
+                .from('user_progress')
+                .select('module_id')
+                .eq('user_id', currentUser.id);
+
+            if (!error && data) {
+                data.forEach(row => {
+                    let modId = row.module_id;
+                    updateModuleUI(modId, 'completed');
+                    
+                    let nextMod = modId + 1;
+                    if (unlockedModules[nextMod] !== undefined || nextMod <= 3) {
+                        unlockedModules[nextMod] = true;
+                        updateModuleUI(nextMod, 'unlocked');
+                    }
+                });
+            }
         }
 
-        // Gestion de la déconnexion
+        initDashboard();
+
+        function updateModuleUI(modId, state) {
+            const item = document.getElementById(`course-item-${modId}`);
+            const statusPill = document.getElementById(`status-${modId}`);
+            const numberBox = item.querySelector('.course-number');
+
+            if (state === 'completed') {
+                item.classList.remove('locked');
+                item.classList.add('unlocked');
+                numberBox.innerText = "✓";
+                statusPill.className = "status-pill completed";
+                statusPill.innerText = "Completed";
+            } else if (state === 'unlocked') {
+                item.classList.remove('locked');
+                item.classList.add('unlocked');
+                numberBox.innerText = "0" + modId;
+                statusPill.className = "status-pill in-progress";
+                statusPill.innerText = "Available";
+            }
+        }
+
+        window.openCourse = function(id) {
+            if (!unlockedModules[id]) {
+                alert("Please complete the previous module to unlock this one!");
+                return;
+            }
+            window.location.href = `watch.html?module=${id}`;
+        };
+
         const logoutBtn = document.getElementById('logout-btn');
         if(logoutBtn) {
             logoutBtn.addEventListener('click', async () => {
