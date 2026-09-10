@@ -28,6 +28,7 @@
         }
         .form-group {
             margin-bottom: 15px;
+            position: relative; /* Indispensable pour positionner l'icône de l'œil à l'intérieur */
         }
         .form-group label {
             display: block;
@@ -38,10 +39,26 @@
         .login-card input {
             width: 100%;
             padding: 12px;
+            padding-right: 45px; /* Espace réservé pour ne pas écrire sous l'icône */
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-color);
             border-radius: 6px;
             color: var(--text-main);
+        }
+        /* Style du bouton œil pour afficher/masquer le mot de passe */
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 36px; /* Ajusté pour s'aligner parfaitement dans le champ input */
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #aaa;
+            font-size: 1.1rem;
+            padding: 5px;
+        }
+        .toggle-password:hover {
+            color: var(--gold);
         }
     </style>
 </head>
@@ -83,6 +100,11 @@
                     <label>Password</label>
                     <input type="password" id="password" required>
                     
+                    <!-- Bouton pour afficher/masquer le mot de passe -->
+                    <button type="button" id="togglePasswordBtn" class="toggle-password" aria-label="Show password">
+                        👁️
+                    </button>
+                    
                     <!-- Lien Mot de passe oublié -->
                     <div style="text-align: right; margin-top: 6px;">
                         <a href="forgot-password.html" style="color: var(--gold); font-size: 0.85rem; text-decoration: none;">Forgot your password?</a>
@@ -115,10 +137,23 @@
         }
     </script>
 
-    <!-- Script Supabase de connexion -->
+    <!-- Script d'affichage/masquage du mot de passe et connexion Supabase -->
     <script type="module">
         import { supabase } from './supabaseClient.js';
 
+        // 1. Gestion de l'affichage / masquage du mot de passe
+        const passwordInput = document.getElementById('password');
+        const togglePasswordBtn = document.getElementById('togglePasswordBtn');
+
+        togglePasswordBtn.addEventListener('click', () => {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            
+            // Change l'icône selon l'état (👁️ visible / 🙈 masqué)
+            togglePasswordBtn.textContent = type === 'password' ? '👁️' : '🙈';
+        });
+
+        // 2. Gestion de la connexion Supabase
         const form = document.getElementById('login-form');
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
