@@ -1,22 +1,22 @@
 /* =====================================================
-   GROWTH CAPITAL ACADEMY
-   JAVASCRIPT
+    GROWTH CAPITAL ACADEMY
+    JAVASCRIPT
 ===================================================== */
 
 
 /* ================= MOBILE MENU ================= */
 
-const menuButton = document.getElementById("menuToggle"); // Corrigé de menuButton à menuToggle
-const mobileMenu = document.querySelector(".nav-menu"); // Utilise directement .nav-menu comme conteneur
+const menuButton = document.getElementById("menuToggle"); 
+const mobileMenu = document.querySelector(".nav-menu"); 
 
 if (menuButton && mobileMenu) {
     menuButton.addEventListener("click", () => {
         mobileMenu.classList.toggle("active");
     });
 
-    /* Close mobile menu when clicking a link */
-    mobileMenu.querySelectorAll("a").forEach(link => {
-        link.addEventListener("click", () => {
+    /* Close mobile menu when clicking a link or button */
+    mobileMenu.querySelectorAll("a, button").forEach(element => {
+        element.addEventListener("click", () => {
             mobileMenu.classList.remove("active");
         });
     });
@@ -125,9 +125,10 @@ faqButtons.forEach(button => {
 
 /* ================= CURRENT YEAR ================= */
 
-document.getElementById("year")
-    .textContent =
-    new Date().getFullYear();
+const yearEl = document.getElementById("year");
+if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+}
 
 
 /* ================= NAVBAR ================= */
