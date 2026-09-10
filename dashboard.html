@@ -232,6 +232,13 @@
                 <a href="live.html" style="color: var(--gold); font-weight: bold;">🔴 Live Sessions</a>
                 <button id="logout-btn" class="btn-outline" style="padding: 6px 15px; font-size: 0.9rem; cursor:pointer;">Log Out</button>
             </div>
+
+            <!-- Bouton Hamburger mobile -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
 
@@ -321,6 +328,24 @@
         </section>
 
     </main>
+
+    <!-- Script de gestion du menu hamburger mobile -->
+    <script>
+        const menuButton = document.getElementById("menuToggle"); 
+        const mobileMenu = document.querySelector(".nav-menu"); 
+
+        if (menuButton && mobileMenu) {
+            menuButton.addEventListener("click", () => {
+                mobileMenu.classList.toggle("active");
+            });
+
+            mobileMenu.querySelectorAll("a, button").forEach(link => {
+                link.addEventListener("click", () => {
+                    mobileMenu.classList.remove("active");
+                });
+            });
+        }
+    </script>
 
     <!-- Script Supabase & Gestion de la progression -->
     <script type="module">
