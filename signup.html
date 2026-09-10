@@ -249,7 +249,7 @@
                     <option value="Qatar">Qatar</option>
                     <option value="Romania">Romania</option>
                     <option value="Russia">Russia</option>
-                    <option value="Dominican Republic">Rwanda</option>
+                    <option value="Rwanda">Rwanda</option>
                     <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
                     <option value="Saint Lucia">Saint Lucia</option>
                     <option value="Samoa">Samoa</option>
@@ -527,32 +527,24 @@
 
             const referral_source = document.getElementById('referral_source').value;
 
+            // Inscription propre passant les données au Trigger SQL Supabase
             const { data, error } = await supabase.auth.signUp({
                 email,
-                password
+                password,
+                options: {
+                    data: {
+                        first_name,
+                        last_name,
+                        country,
+                        phone,
+                        referral_source
+                    }
+                }
             });
 
             if (error) {
                 alert("Sign up error: " + error.message);
                 return;
-            }
-
-            if (data.user) {
-                const { error: profileError } = await supabase.from('profiles').insert([
-                    {
-                        id: data.user.id,
-                        email: email,
-                        first_name: first_name,
-                        last_name: last_name,
-                        country: country,
-                        phone: phone,
-                        referral_source: referral_source
-                    }
-                ]);
-
-                if (profileError) {
-                    console.error("Profile insertion warning:", profileError.message);
-                }
             }
 
             window.location.href = "login.html";
