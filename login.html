@@ -56,9 +56,18 @@
                     <span class="line-white">ACADEMY</span>
                 </h1>
             </a>
+            
             <div class="nav-menu">
                 <a href="index.html">Home</a>
+                <a href="signup.html" style="color: var(--gold);">Sign Up</a>
             </div>
+
+            <!-- Bouton Hamburger mobile -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
 
@@ -74,7 +83,7 @@
                     <label>Password</label>
                     <input type="password" id="password" required>
                     
-                    <!-- Lien Mot de passe oublié ajouté ici -->
+                    <!-- Lien Mot de passe oublié -->
                     <div style="text-align: right; margin-top: 6px;">
                         <a href="forgot-password.html" style="color: var(--gold); font-size: 0.85rem; text-decoration: none;">Forgot your password?</a>
                     </div>
@@ -88,6 +97,25 @@
         </div>
     </section>
 
+    <!-- Script de gestion du menu hamburger mobile -->
+    <script>
+        const menuButton = document.getElementById("menuToggle"); 
+        const mobileMenu = document.querySelector(".nav-menu"); 
+
+        if (menuButton && mobileMenu) {
+            menuButton.addEventListener("click", () => {
+                mobileMenu.classList.toggle("active");
+            });
+
+            mobileMenu.querySelectorAll("a").forEach(link => {
+                link.addEventListener("click", () => {
+                    mobileMenu.classList.remove("active");
+                });
+            });
+        }
+    </script>
+
+    <!-- Script Supabase de connexion -->
     <script type="module">
         import { supabase } from './supabaseClient.js';
 
@@ -104,7 +132,6 @@
             if (error) {
                 document.getElementById('error-message').innerText = error.message;
             } else {
-                // Redirection instantanée sans popup d'alerte "OK"
                 window.location.href = "dashboard.html";
             }
         });
