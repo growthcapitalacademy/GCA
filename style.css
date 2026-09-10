@@ -549,66 +549,56 @@ footer { background: #04060a; border-top: 1px solid var(--border-color); padding
 }
 
 @media (max-width: 768px) {
-    /* 1. Ajustement global de la barre de navigation et du logo */
+    /* 1. Ajustement global de la barre de navigation et du logo pour ne rien écraser */
     .navbar {
         padding: 10px 0;
     }
     
     .logo img.logo-img {
-        height: 55px;
+        height: 55px; /* Logo adapté pour mobile */
     }
 
     .hero-title {
-        font-size: 1.1rem;
+        font-size: 1.1rem; /* Titre proportionné pour smartphone */
     }
 
-    /* 2. Menu mobile transformé en panneau latéral coulissant (Corrigé) */
+    /* 2. Menu mobile déroulant interactif */
     .nav-menu {
-        display: flex;
+        display: none;
         flex-direction: column;
-        position: fixed;
-        top: 0;
-        right: -100%; /* Caché hors de l'écran par défaut */
-        width: 80%;
-        max-width: 300px;
-        height: 100vh;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
         background: rgba(7, 9, 14, 0.98);
-        backdrop-filter: blur(15px);
-        border-left: 1px solid var(--border-color);
-        padding: 80px 30px 30px 30px;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 20px;
-        transition: right 0.4s ease-in-out;
-        z-index: 1000;
-        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border-color);
+        padding: 20px;
+        text-align: center;
+        gap: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.8);
     }
 
-    /* Quand le JS ajoute .active, le menu glisse et s'affiche sans défilement horizontal */
     .nav-menu.active {
-        right: 0 !important;
+        display: flex !important;
     }
 
     .nav-menu a {
-        font-size: 1.1rem;
-        width: 100%;
-        text-align: center;
-        padding: 10px 0;
+        font-size: 1rem;
     }
 
     .nav-button {
         display: inline-block;
         width: 100%;
         text-align: center;
-        padding: 12px;
+        padding: 10px;
     }
 
     .menu-toggle {
         display: flex;
-        z-index: 1001; /* Toujours au-dessus pour rester cliquable */
     }
 
-    /* 3. Adaptation des espacements du reste de la page */
+    /* 3. Adaptation des espacements pour éviter les gros blocs vides */
     .hero {
         padding: 130px 0 60px;
     }
@@ -634,6 +624,7 @@ footer { background: #04060a; border-top: 1px solid var(--border-color); padding
         font-size: 1.8rem; 
     }
 
+    /* 4. Sécurité des conteneurs pour éviter tout débordement sur les bords */
     .container {
         padding: 0 15px;
     }
