@@ -88,7 +88,7 @@ ul {
 
 /* --- SECTION GENERAL --- */
 .section {
-    padding: 70px 0;
+    padding: 40px 0;
     position: relative;
 }
 
@@ -571,7 +571,7 @@ ul {
     gap: 15px;
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    padding: 20px;
+    padding: 150px;
     border-radius: 12px;
     transition: var(--transition);
     text-align: left;
