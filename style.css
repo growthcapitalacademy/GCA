@@ -86,13 +86,6 @@ ul {
     color: var(--gold);
 }
 
-/* .large-btn {
-    width: 100%;
-    max-width: 400px;
-    margin: 20px auto 0;
-    display: flex;
-} */
-
 /* --- SECTION GENERAL --- */
 .section {
     padding: 100px 0;
@@ -132,6 +125,45 @@ ul {
     max-width: 800px;
     margin: 0 auto 60px;
 }
+
+/* --- STYLES SPÉCIFIQUES POUR LES IMAGES AJOUTÉES (Centrage et taille normale) --- */
+.experience-image-container,
+.roadmap-image-container,
+.section-image-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.experience-image-container img,
+.roadmap-image-container img,
+.section-image-container img {
+    width: 100%;
+    max-width: 500px; /* Taille normale contrôlée et harmonieuse */
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    display: block;
+}
+
+/* Espacements spécifiques pour chaque conteneur d'image */
+.experience-image-container {
+    margin: 25px auto 45px auto;
+    padding: 0 15px;
+}
+
+.roadmap-image-container {
+    margin: 25px auto 45px auto;
+    padding: 0 15px;
+}
+
+.section-image-container {
+    margin: 30px auto 0 auto;
+    padding: 0 15px;
+}
+
 
 /* ==========================================================================
    NAVIGATION BAR & LOGO STYLE
@@ -204,22 +236,6 @@ ul {
 
 .nav-menu a:hover {
     color: var(--gold);
-}
-
-.nav-button {
-    background: transparent;
-    color: var(--gold);
-    border: 1px solid var(--gold);
-    padding: 8px 18px;
-    border-radius: 4px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    transition: var(--transition);
-}
-
-.nav-button:hover {
-    background: var(--gold);
-    color: var(--bg-dark);
 }
 
 .menu-toggle {
@@ -330,7 +346,7 @@ ul {
     100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
 }
 
-.hero h1 {
+.hero h2 {
     font-family: 'Playfair Display', serif;
     font-size: 3.5rem;
     font-weight: 900;
@@ -338,26 +354,21 @@ ul {
     margin-bottom: 15px;
 }
 
-.hero h1 span { color: var(--gold); }
-.hero h1 em {
-    font-style: normal;
-    color: var(--gold-light);
-    font-size: 2.8rem;
-    display: block;
+.hero h2 span { 
+    color: var(--gold); 
 }
 
-.hero-time {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--text-muted);
-    margin-bottom: 20px;
+.hero-description { 
+    color: var(--text-muted); 
+    font-size: 1.05rem; 
+    margin-bottom: 25px; 
 }
 
-.hero-time span { color: var(--gold); font-size: 1.3rem; }
-.hero-subtitle { font-size: 0.9rem; font-weight: 700; letter-spacing: 2px; color: var(--gold); margin-bottom: 15px; }
-.hero-description { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 15px; }
-.hero-description.second { margin-bottom: 30px; }
-.hero-buttons { display: flex; gap: 15px; margin-bottom: 40px; }
+.hero-buttons { 
+    display: flex; 
+    gap: 15px; 
+    margin-bottom: 40px; 
+}
 
 .trust-row {
     display: flex;
@@ -602,13 +613,6 @@ footer { background: #04060a; border-top: 1px solid var(--border-color); padding
         padding: 10px 0;
     }
 
-    .nav-button {
-        display: inline-block;
-        width: 100%;
-        text-align: center;
-        padding: 12px;
-    }
-
     .menu-toggle {
         display: flex;
         z-index: 1001; /* Reste toujours cliquable au-dessus du panneau */
@@ -619,13 +623,9 @@ footer { background: #04060a; border-top: 1px solid var(--border-color); padding
         padding: 40px 0 60px !important;
     }
 
-    .hero h1 { 
+    .hero h2 { 
         font-size: 2.2rem; 
         line-height: 1.2;
-    }
-    
-    .hero h1 em { 
-        font-size: 1.8rem; 
     }
 
     .section {
@@ -642,10 +642,6 @@ footer { background: #04060a; border-top: 1px solid var(--border-color); padding
 
     .container {
         padding: 0 15px;
-    }
-
-    .login-card, .bonus-card, .program-card {
-        padding: 20px;
     }
 
     .footer-top { 
@@ -683,4 +679,3 @@ footer { background: #04060a; border-top: 1px solid var(--border-color); padding
         text-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
     }
 }
-
