@@ -274,60 +274,163 @@
 
         </div>
 
-        <!-- Section de progression et de tous les cours intégrée -->
-        <section id="curriculum-section" class="courses-section">
-            <h2>Curriculum & Progress Tracker</h2>
-            <p>Complete each module sequentially. Unlocking happens automatically as you progress through your learning path.</p>
-            
-            <div class="course-list">
-                
-                <!-- Module 1 -->
-                <div id="course-item-1" class="course-item unlocked" onclick="openCourse(1)">
-                    <div class="course-info-left">
-                        <div class="course-number">01</div>
-                        <div class="course-details">
-                            <h4>Module 1 : Fundamentals</h4>
-                            <p>Master the essential basics of financial management and markets. (15 min)</p>
-                        </div>
-                    </div>
-                    <div class="course-action">
-                        <span id="status-1" class="status-pill in-progress">Available</span>
-                        <button class="btn btn-outline" style="padding: 6px 15px; font-size: 0.85rem;">Watch →</button>
-                    </div>
-                </div>
+       <div class="curriculum-container">
+    <!-- ================= THEORY MODULES ================= -->
+    <div class="module-category-title" style="color: var(--gold); font-size: 1.2rem; font-weight: 700; margin: 30px 0 20px; letter-spacing: 1px;">
+        📚 THEORY MODULES
+    </div>
 
-                <!-- Module 2 -->
-                <div id="course-item-2" class="course-item locked" onclick="openCourse(2)">
-                    <div class="course-info-left">
-                        <div class="course-number" id="num-2">🔒</div>
-                        <div class="course-details">
-                            <h4>Module 2 : Trading Strategies</h4>
-                            <p>Learn how to analyze charts and manage market risks. (25 min)</p>
-                        </div>
-                    </div>
-                    <div class="course-action">
-                        <span id="status-2" class="status-pill locked">Locked</span>
-                    </div>
-                </div>
+    <!-- Module 1 -->
+    <div class="program-card-tracker available">
+        <div class="module-number">01</div>
+        <div class="module-info">
+            <h3>Finance</h3>
+            <p>Master the essential principles of financial management and structure. (30 min)</p>
+        </div>
+        <div class="module-action">
+            <span class="status-badge available">Available</span>
+            <a href="#" class="btn btn-gold btn-sm">Watch →</a>
+        </div>
+    </div>
 
-                <!-- Module 3 -->
-                <div id="course-item-3" class="course-item locked" onclick="openCourse(3)">
-                    <div class="course-info-left">
-                        <div class="course-number" id="num-3">🔒</div>
-                        <div class="course-details">
-                            <h4>Module 3 : Mindset</h4>
-                            <p>Develop a long-term vision and a seasoned investor mindset. (20 min)</p>
-                        </div>
-                    </div>
-                    <div class="course-action">
-                        <span id="status-3" class="status-pill locked">Locked</span>
-                    </div>
-                </div>
+    <!-- Module 2 -->
+    <div class="program-card-tracker locked">
+        <div class="module-number">02</div>
+        <div class="module-info">
+            <h3>Marketing</h3>
+            <p>Understand market positioning, acquisition, and scaling strategies. (25 min)</p>
+        </div>
+        <div class="module-action">
+            <span class="status-badge locked">Locked</span>
+        </div>
+    </div>
 
-            </div>
-        </section>
+    <!-- Module 3 -->
+    <div class="program-card-tracker locked">
+        <div class="module-number">03</div>
+        <div class="module-info">
+            <h3>Business Psychology</h3>
+            <p>Explore decision-making behaviors, mindset, and resilience. (20 min)</p>
+        </div>
+        <div class="module-action">
+            <span class="status-badge locked">Locked</span>
+        </div>
+    </div>
 
-    </main>
+    <!-- Module 4 -->
+    <div class="program-card-tracker locked">
+        <div class="module-number">04</div>
+        <div class="module-info">
+            <h3>Trading</h3>
+            <p>Learn chart analysis, risk management, and market mechanics. (35 min)</p>
+        </div>
+        <div class="module-action">
+            <span class="status-badge locked">Locked</span>
+        </div>
+    </div>
+
+    <!-- Module 5 -->
+    <div class="program-card-tracker locked">
+        <div class="module-number">05</div>
+        <div class="module-info">
+            <h3>Business Laws</h3>
+            <p>Navigate legal frameworks, compliance, and regulations. (25 min)</p>
+        </div>
+        <div class="module-action">
+            <span class="status-badge locked">Locked</span>
+        </div>
+    </div>
+
+    <!-- Module 6 -->
+    <div class="program-card-tracker locked">
+        <div class="module-number">06</div>
+        <div class="module-info">
+            <h3>Business Politics</h3>
+            <p>Analyze corporate governance, negotiation, and strategic influence. (20 min)</p>
+        </div>
+        <div class="module-action">
+            <span class="status-badge locked">Locked</span>
+        </div>
+    </div>
+
+
+    <!-- ================= PRACTICE MODULES ================= -->
+    <div class="module-category-title" style="color: var(--gold); font-size: 1.2rem; font-weight: 700; margin: 50px 0 20px; letter-spacing: 1px;">
+        ⚡ PRACTICE MODULES
+    </div>
+
+    <!-- Module 7 -->
+    <div class="program-card-tracker locked">
+        <div class="module-number">01</div>
+        <div class="module-info">
+            <h3>Live Market Analysis</h3>
+            <p>Examine real-time setups, trends, and market indicators. (40 min)</p>
+        </div>
+        <div class="module-action">
+            <span class="status-badge locked">Locked</span>
+        </div>
+    </div>
+
+    <!-- Module 8 -->
+    <div class="program-card-tracker locked">
+        <div class="module-number">02</div>
+        <div class="module-info">
+            <h3>Practical Trading Sessions</h3>
+            <p>Execute trades under live market conditions with guided oversight. (45 min)</p>
+        </div>
+        <div class="module-action">
+            <span class="status-badge locked">Locked</span>
+        </div>
+    </div>
+
+    <!-- Module 9 -->
+    <div class="program-card-tracker locked">
+        <div class="module-number">03</div>
+        <div class="module-info">
+            <h3>Real Market Experience</h3>
+            <p>Immersive scenarios and practical case studies. (30 min)</p>
+        </div>
+        <div class="module-action">
+            <span class="status-badge locked">Locked</span>
+        </div>
+    </div>
+
+    <!-- Module 10 -->
+    <div class="program-card-tracker locked">
+        <div class="module-number">04</div>
+        <div class="module-info">
+            <h3>Strategy Development</h3>
+            <p>Build, test, and optimize your personal trading or business plan. (35 min)</p>
+        </div>
+        <div class="module-action">
+            <span class="status-badge locked">Locked</span>
+        </div>
+    </div>
+
+    <!-- Module 11 -->
+    <div class="program-card-tracker locked">
+        <div class="module-number">05</div>
+        <div class="module-info">
+            <h3>Business Organization Support</h3>
+            <p>Structure your company entity, workflow, and operations. (30 min)</p>
+        </div>
+        <div class="module-action">
+            <span class="status-badge locked">Locked</span>
+        </div>
+    </div>
+
+    <!-- Module 12 -->
+    <div class="program-card-tracker locked">
+        <div class="module-number">06</div>
+        <div class="module-info">
+            <h3>Business Financing Assistance</h3>
+            <p>Identify funding sources, capital management, and pitching methods. (30 min)</p>
+        </div>
+        <div class="module-action">
+            <span class="status-badge locked">Locked</span>
+        </div>
+    </div>
+</div>
 
     <!-- Script de gestion du menu hamburger mobile -->
     <script>
