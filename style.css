@@ -254,6 +254,109 @@ ul {
     background: var(--text-main);
 }
 
+.program-card-tracker {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px 25px;
+    margin-bottom: 15px;
+    transition: var(--transition);
+}
+
+.program-card-tracker:hover {
+    border-color: var(--gold);
+    background: var(--bg-card-hover);
+}
+
+.program-card-tracker.available {
+    border-color: rgba(212, 175, 55, 0.4);
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.03) 0%, var(--bg-card) 100%);
+}
+
+.program-card-tracker .module-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--gold);
+    background: rgba(212, 175, 55, 0.1);
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.program-card-tracker .module-info {
+    flex-grow: 1;
+}
+
+.program-card-tracker .module-info h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 4px;
+}
+
+.program-card-tracker .module-info p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.program-card-tracker .module-action {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-shrink: 0;
+    margin-left: 20px;
+}
+
+.status-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.status-badge.available {
+    background: rgba(212, 175, 55, 0.15);
+    color: var(--gold);
+    border: 1px solid var(--border-color);
+}
+
+.status-badge.locked {
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-muted);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.btn-sm {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+}
+
+/* Responsive pour mobile */
+@media (max-width: 768px) {
+    .program-card-tracker {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .program-card-tracker .module-action {
+        width: 100%;
+        justify-content: space-between;
+        margin-left: 0;
+    }
+}
+
+
 /* ==========================================================================
    HERO SECTION
    ========================================================================== */
