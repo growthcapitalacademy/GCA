@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation - Growth Capital Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #07090e;
+            --bg-card: #0e131f;
+            --gold: #d4af37;
+            --gold-dark: #aa8c2c;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --border-color: rgba(212, 175, 55, 0.2);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .confirmation-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+
+        .success-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        h1 span {
+            color: var(--gold);
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .token-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            word-break: break-all;
+            margin-bottom: 25px;
+            text-align: left;
+            max-height: 100px;
+            overflow-y: auto;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 14px 28px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: var(--bg-dark);
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(212, 175, 55, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="confirmation-card">
+        <div class="success-icon">✓</div>
+        <h1>Accès <span>Confirmé</span></h1>
+        <p>Votre authentification a réussi. Vous êtes désormais connecté à l'espace Growth Capital Academy.</p>
+        
+        <div class="token-box" id="tokenDisplay">
+            Recherche du jeton d'accès...
+        </div>
+
+        <a href="index.html" class="btn">Retourner à l'accueil</a>
+    </div>
+
+    <script>
+        // Récupération sécurisée du jeton d'accès situé après le '#' dans l'URL
+        const hashParams = new URLSearchParams(window.location.hash.substring(1));
+        const accessToken = hashParams.get('access_token');
+        const tokenDisplay = document.getElementById('tokenDisplay');
+
+        if (accessToken) {
+            tokenDisplay.innerHTML = `<strong>Jeton détecté :</strong> ${accessToken.substring(0, 30)}...`;
+            // Vous pouvez stocker le jeton si nécessaire :
+            // localStorage.setItem('access_token', accessToken);
+        } else {
+            tokenDisplay.innerHTML = "Aucun jeton trouvé dans l'URL, mais la page est bien chargée.";
+        }
+    </script>
+
+</body>
+</html>
