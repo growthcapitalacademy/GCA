@@ -140,7 +140,7 @@ ul {
 .roadmap-image-container img,
 .section-image-container img {
     width: 100%;
-    max-width: 500px; /* Taille normale contrôlée et harmonieuse */
+    max-width: 500px;
     height: auto;
     border-radius: 12px;
     border: 1px solid var(--border-color);
@@ -148,7 +148,6 @@ ul {
     display: block;
 }
 
-/* Espacements spécifiques pour chaque conteneur d'image */
 .experience-image-container {
     margin: 25px auto 45px auto;
     padding: 0 15px;
@@ -163,7 +162,6 @@ ul {
     margin: 30px auto 0 auto;
     padding: 0 15px;
 }
-
 
 /* ==========================================================================
    NAVIGATION BAR & LOGO STYLE
@@ -186,7 +184,6 @@ ul {
     justify-content: space-between;
 }
 
-/* Style de l'image du logo */
 .logo {
     display: flex;
     align-items: center;
@@ -200,7 +197,6 @@ ul {
     flex-shrink: 0;
 }
 
-/* Style global du titre sur 2 lignes */
 .hero-title {
     display: flex;
     flex-direction: column;
@@ -211,12 +207,10 @@ ul {
     letter-spacing: 1px;
 }
 
-/* Première ligne en jaune doré */
 .hero-title .line-gold {
     color: var(--gold);
 }
 
-/* Deuxième ligne en blanc */
 .hero-title .line-white {
     color: #ffffff;
 }
@@ -342,7 +336,6 @@ ul {
     font-size: 0.85rem;
 }
 
-/* Responsive pour mobile */
 @media (max-width: 768px) {
     .program-card-tracker {
         flex-direction: column;
@@ -355,7 +348,6 @@ ul {
         margin-left: 0;
     }
 }
-
 
 /* ==========================================================================
    HERO SECTION
@@ -577,7 +569,7 @@ ul {
 .program-card:hover .program-button { background: var(--gold); color: var(--bg-dark); border-color: var(--gold); }
 
 /* ==========================================================================
-   CTA & CONTACT CARDS (FIXED EMAIL OVERFLOW)
+   CTA & CONTACT CARDS
    ========================================================================== */
 .cta-section { padding: 100px 0; background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 70%); text-align: center; }
 .cta-content h2 { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900; margin-bottom: 20px; }
@@ -653,7 +645,7 @@ footer { background: #04060a; border-top: 1px solid var(--border-color); padding
 .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.05); color: var(--text-muted); font-size: 0.85rem; }
 
 /* ==========================================================================
-   RESPONSIVE DESIGN & OPTIMIZED MOBILE LAYOUT (GLOBAL POUR TOUTES LES PAGES)
+   RESPONSIVE DESIGN & OPTIMIZED MOBILE LAYOUT
    ========================================================================== */
 @media (max-width: 992px) {
     .hero-container { grid-template-columns: 1fr; text-align: center; gap: 40px; }
@@ -663,13 +655,11 @@ footer { background: #04060a; border-top: 1px solid var(--border-color); padding
 }
 
 @media (max-width: 768px) {
-    /* 1. Sécurité globale pour éviter que le contenu ne passe sous la navbar fixe sur toutes les pages */
     body {
         padding-top: 75px;
         overflow-x: hidden;
     }
 
-    /* 2. Ajustement global de la barre de navigation et du logo */
     .navbar {
         padding: 10px 0;
     }
@@ -682,13 +672,12 @@ footer { background: #04060a; border-top: 1px solid var(--border-color); padding
         font-size: 1rem;
     }
 
-    /* 3. Menu mobile transformé en panneau latéral coulissant propre */
     .nav-menu {
         display: flex;
         flex-direction: column;
         position: fixed;
         top: 0;
-        right: -100%; /* Caché hors écran par défaut */
+        right: -100%;
         width: 80%;
         max-width: 300px;
         height: 100vh;
@@ -704,7 +693,6 @@ footer { background: #04060a; border-top: 1px solid var(--border-color); padding
         box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
     }
 
-    /* Quand le JS active le menu, il glisse vers l'écran sans défilement horizontal */
     .nav-menu.active {
         right: 0 !important;
     }
@@ -718,10 +706,9 @@ footer { background: #04060a; border-top: 1px solid var(--border-color); padding
 
     .menu-toggle {
         display: flex;
-        z-index: 1001; /* Reste toujours cliquable au-dessus du panneau */
+        z-index: 1001;
     }
 
-    /* 4. Adaptation des espacements du reste de la page */
     .hero {
         padding: 40px 0 60px !important;
     }
@@ -760,7 +747,7 @@ footer { background: #04060a; border-top: 1px solid var(--border-color); padding
 }
 
 /* ==========================================================================
-   EFFECTS & ANIMATIONS (DOTS & GLOW)
+   EFFECTS & ANIMATIONS
    ========================================================================== */
 .dot-sep {
     color: var(--gold);
