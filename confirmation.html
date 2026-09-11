@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -118,28 +118,28 @@
 
     <div class="confirmation-card">
         <div class="success-icon">✓</div>
-        <h1>Accès <span>Confirmé</span></h1>
-        <p>Votre authentification a réussi. Vous êtes désormais connecté à l'espace Growth Capital Academy.</p>
+        <h1>Access <span>Confirmed</span></h1>
+        <p>Your authentication was successful. You are now connected to the Growth Capital Academy portal.</p>
         
         <div class="token-box" id="tokenDisplay">
-            Recherche du jeton d'accès...
+            Searching for access token...
         </div>
 
-        <a href="index.html" class="btn">Retourner à l'accueil</a>
+        <a href="index.html" class="btn">Return to Home</a>
     </div>
 
     <script>
-        // Récupération sécurisée du jeton d'accès situé après le '#' dans l'URL
+        // Securely retrieve the access token located after the '#' in the URL
         const hashParams = new URLSearchParams(window.location.hash.substring(1));
         const accessToken = hashParams.get('access_token');
         const tokenDisplay = document.getElementById('tokenDisplay');
 
         if (accessToken) {
-            tokenDisplay.innerHTML = `<strong>Jeton détecté :</strong> ${accessToken.substring(0, 30)}...`;
-            // Vous pouvez stocker le jeton si nécessaire :
+            tokenDisplay.innerHTML = `<strong>Token detected:</strong> ${accessToken.substring(0, 30)}...`;
+            // You can store the token if needed:
             // localStorage.setItem('access_token', accessToken);
         } else {
-            tokenDisplay.innerHTML = "Aucun jeton trouvé dans l'URL, mais la page est bien chargée.";
+            tokenDisplay.innerHTML = "No token found in the URL, but the page loaded successfully.";
         }
     </script>
 
