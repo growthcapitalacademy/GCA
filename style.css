@@ -98,7 +98,7 @@ ul {
     font-weight: 700;
     letter-spacing: 2px;
     color: var(--gold);
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     text-transform: uppercase;
 }
 
@@ -385,7 +385,7 @@ ul {
 
 .candles {
     position: absolute;
-    top: 20%;
+    top: 30%;
     right: 10%;
     display: flex;
     gap: 15px;
@@ -571,8 +571,8 @@ ul {
 /* ==========================================================================
    CTA & CONTACT CARDS
    ========================================================================== */
-.cta-section { padding: 100px 0; background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 70%); text-align: center; }
-.cta-content h2 { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900; margin-bottom: 20px; }
+.cta-section { padding: 50px 0; background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 70%); text-align: center; }
+.cta-content h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; margin-bottom: 10px; }
 .cta-content h2 span { color: var(--gold); }
 .cta-content > p { color: var(--text-muted); max-width: 600px; margin: 0 auto 50px; }
 
@@ -584,7 +584,7 @@ ul {
     gap: 15px;
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    padding: 20px;
+    padding: 10px;
     border-radius: 12px;
     transition: var(--transition);
     text-align: left;
@@ -620,7 +620,7 @@ ul {
     font-size: 0.7rem;
     color: var(--text-muted);
     letter-spacing: 1px;
-    margin-bottom: 3px;
+    margin-bottom: 2px;
 }
 
 .contact-card strong {
