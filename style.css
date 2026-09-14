@@ -416,15 +416,16 @@ ul {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: rgba(212, 175, 55, 0.1);
-    border: 1px solid var(--border-color);
+    background: rgba(212, 175, 55, 0.12); /* Fond légèrement plus distinct */
+    border: 1px solid var(--gold); /* Bordure dorée pour mieux le détacher */
     padding: 6px 14px;
     border-radius: 50px;
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 1.5px;
     color: var(--gold);
-    margin-bottom: 25px;
+    margin-top: 30px;    /* Ajoute de l'espace au-dessus */
+    margin-bottom: 25px; /* Garde ton espace en bas */
 }
 
 .pulse {
