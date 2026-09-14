@@ -217,7 +217,6 @@
     <header class="navbar">
         <div class="container nav-container">
 
-            <!-- Structure du logo alignée exactement sur index.html -->
             <a href="dashboard.html" class="logo">
                 <img src="GCA.png" alt="Growth Capital Academy" class="logo-img">
                 <h1 class="hero-title" style="font-size: inherit; margin: 0;">
@@ -251,14 +250,14 @@
                 <h1 id="welcome-title">Welcome back, <span>Student</span></h1>
                 <p>Ready to build your financial future and master the markets today?</p>
             </div>
+            <!-- Bouton corrigé pointant vers l'ID du curriculum -->
             <a href="#curriculum-section" class="btn btn-gold">VIEW CURRICULUM ↓</a>
         </div>
 
-        <!-- ================= IMAGE AJOUTÉE APRÈS LA BIENVENUE ================= -->
-     <div class="section-image-container" style="display: flex; justify-content: center;">
-    <img src="student.jpeg" alt="Student Banner">
-</div>
-        <!-- =================================================================== -->
+        <!-- Image bannière -->
+        <div class="section-image-container" style="display: flex; justify-content: center; margin-bottom: 30px;">
+            <img src="student.jpeg" alt="Student Banner">
+        </div>
 
         <!-- Main Sections Grid -->
         <div class="dashboard-grid">
@@ -280,163 +279,177 @@
 
         </div>
 
-       <div class="curriculum-container">
-    <!-- ================= THEORY MODULES ================= -->
-    <div class="module-category-title" style="color: var(--gold); font-size: 1.2rem; font-weight: 700; margin: 30px 0 20px; letter-spacing: 1px;">
-        📚 THEORY MODULES
-    </div>
+        <!-- Conteneur des cours avec l'ID cible pour le bouton -->
+        <div class="curriculum-container" id="curriculum-section">
+            
+            <!-- ================= THEORY MODULES ================= -->
+            <div class="module-category-title" style="color: var(--gold); font-size: 1.2rem; font-weight: 700; margin: 30px 0 20px; letter-spacing: 1px;">
+                📚 THEORY MODULES
+            </div>
 
-    <!-- Module 1 -->
-    <div class="program-card-tracker available">
-        <div class="module-number">01</div>
-        <div class="module-info">
-            <h3>Finance</h3>
-            <p>Master the essential principles of financial management and structure. (30 min)</p>
-        </div>
-        <div class="module-action">
-            <span class="status-badge available">Available</span>
-            <a href="#" class="btn btn-gold btn-sm">Watch →</a>
-        </div>
-    </div>
+            <!-- Module 1 -->
+            <div class="program-card-tracker available" id="course-item-1">
+                <div class="module-number">01</div>
+                <div class="module-info">
+                    <h3>Finance</h3>
+                    <p>Master the essential principles of financial management and structure. (30 min)</p>
+                </div>
+                <div class="module-action">
+                    <span class="status-badge available" id="status-1">Available</span>
+                    <button class="btn btn-gold btn-sm" onclick="openCourse(1)">Watch →</button>
+                </div>
+            </div>
 
-    <!-- Module 2 -->
-    <div class="program-card-tracker locked">
-        <div class="module-number">02</div>
-        <div class="module-info">
-            <h3>Marketing</h3>
-            <p>Understand market positioning, acquisition, and scaling strategies. (25 min)</p>
-        </div>
-        <div class="module-action">
-            <span class="status-badge locked">Locked</span>
-        </div>
-    </div>
+            <!-- Module 2 -->
+            <div class="program-card-tracker locked" id="course-item-2">
+                <div class="module-number">02</div>
+                <div class="module-info">
+                    <h3>Marketing</h3>
+                    <p>Understand market positioning, acquisition, and scaling strategies. (25 min)</p>
+                </div>
+                <div class="module-action">
+                    <span class="status-badge locked" id="status-2">Locked</span>
+                    <button class="btn btn-outline btn-sm" onclick="openCourse(2)">Watch →</button>
+                </div>
+            </div>
 
-    <!-- Module 3 -->
-    <div class="program-card-tracker locked">
-        <div class="module-number">03</div>
-        <div class="module-info">
-            <h3>Business Psychology</h3>
-            <p>Explore decision-making behaviors, mindset, and resilience. (20 min)</p>
-        </div>
-        <div class="module-action">
-            <span class="status-badge locked">Locked</span>
-        </div>
-    </div>
+            <!-- Module 3 -->
+            <div class="program-card-tracker locked" id="course-item-3">
+                <div class="module-number">03</div>
+                <div class="module-info">
+                    <h3>Business Psychology</h3>
+                    <p>Explore decision-making behaviors, mindset, and resilience. (20 min)</p>
+                </div>
+                <div class="module-action">
+                    <span class="status-badge locked" id="status-3">Locked</span>
+                    <button class="btn btn-outline btn-sm" onclick="openCourse(3)">Watch →</button>
+                </div>
+            </div>
 
-    <!-- Module 4 -->
-    <div class="program-card-tracker locked">
-        <div class="module-number">04</div>
-        <div class="module-info">
-            <h3>Trading</h3>
-            <p>Learn chart analysis, risk management, and market mechanics. (35 min)</p>
-        </div>
-        <div class="module-action">
-            <span class="status-badge locked">Locked</span>
-        </div>
-    </div>
+            <!-- Module 4 -->
+            <div class="program-card-tracker locked" id="course-item-4">
+                <div class="module-number">04</div>
+                <div class="module-info">
+                    <h3>Trading</h3>
+                    <p>Learn chart analysis, risk management, and market mechanics. (35 min)</p>
+                </div>
+                <div class="module-action">
+                    <span class="status-badge locked" id="status-4">Locked</span>
+                    <button class="btn btn-outline btn-sm" onclick="openCourse(4)">Watch →</button>
+                </div>
+            </div>
 
-    <!-- Module 5 -->
-    <div class="program-card-tracker locked">
-        <div class="module-number">05</div>
-        <div class="module-info">
-            <h3>Business Laws</h3>
-            <p>Navigate legal frameworks, compliance, and regulations. (25 min)</p>
-        </div>
-        <div class="module-action">
-            <span class="status-badge locked">Locked</span>
-        </div>
-    </div>
+            <!-- Module 5 -->
+            <div class="program-card-tracker locked" id="course-item-5">
+                <div class="module-number">05</div>
+                <div class="module-info">
+                    <h3>Business Laws</h3>
+                    <p>Navigate legal frameworks, compliance, and regulations. (25 min)</p>
+                </div>
+                <div class="module-action">
+                    <span class="status-badge locked" id="status-5">Locked</span>
+                    <button class="btn btn-outline btn-sm" onclick="openCourse(5)">Watch →</button>
+                </div>
+            </div>
 
-    <!-- Module 6 -->
-    <div class="program-card-tracker locked">
-        <div class="module-number">06</div>
-        <div class="module-info">
-            <h3>Business Politics</h3>
-            <p>Analyze corporate governance, negotiation, and strategic influence. (20 min)</p>
-        </div>
-        <div class="module-action">
-            <span class="status-badge locked">Locked</span>
-        </div>
-    </div>
+            <!-- Module 6 -->
+            <div class="program-card-tracker locked" id="course-item-6">
+                <div class="module-number">06</div>
+                <div class="module-info">
+                    <h3>Business Politics</h3>
+                    <p>Analyze corporate governance, negotiation, and strategic influence. (20 min)</p>
+                </div>
+                <div class="module-action">
+                    <span class="status-badge locked" id="status-6">Locked</span>
+                    <button class="btn btn-outline btn-sm" onclick="openCourse(6)">Watch →</button>
+                </div>
+            </div>
 
+            <!-- ================= PRACTICE MODULES ================= -->
+            <div class="module-category-title" style="color: var(--gold); font-size: 1.2rem; font-weight: 700; margin: 50px 0 20px; letter-spacing: 1px;">
+                ⚡ PRACTICE MODULES
+            </div>
 
-    <!-- ================= PRACTICE MODULES ================= -->
-    <div class="module-category-title" style="color: var(--gold); font-size: 1.2rem; font-weight: 700; margin: 50px 0 20px; letter-spacing: 1px;">
-        ⚡ PRACTICE MODULES
-    </div>
+            <!-- Module 7 -->
+            <div class="program-card-tracker locked" id="course-item-7">
+                <div class="module-number">01</div>
+                <div class="module-info">
+                    <h3>Live Market Analysis</h3>
+                    <p>Examine real-time setups, trends, and market indicators. (40 min)</p>
+                </div>
+                <div class="module-action">
+                    <span class="status-badge locked" id="status-7">Locked</span>
+                    <button class="btn btn-outline btn-sm" onclick="openCourse(7)">Watch →</button>
+                </div>
+            </div>
 
-    <!-- Module 7 -->
-    <div class="program-card-tracker locked">
-        <div class="module-number">01</div>
-        <div class="module-info">
-            <h3>Live Market Analysis</h3>
-            <p>Examine real-time setups, trends, and market indicators. (40 min)</p>
-        </div>
-        <div class="module-action">
-            <span class="status-badge locked">Locked</span>
-        </div>
-    </div>
+            <!-- Module 8 -->
+            <div class="program-card-tracker locked" id="course-item-8">
+                <div class="module-number">02</div>
+                <div class="module-info">
+                    <h3>Practical Trading Sessions</h3>
+                    <p>Execute trades under live market conditions with guided oversight. (45 min)</p>
+                </div>
+                <div class="module-action">
+                    <span class="status-badge locked" id="status-8">Locked</span>
+                    <button class="btn btn-outline btn-sm" onclick="openCourse(8)">Watch →</button>
+                </div>
+            </div>
 
-    <!-- Module 8 -->
-    <div class="program-card-tracker locked">
-        <div class="module-number">02</div>
-        <div class="module-info">
-            <h3>Practical Trading Sessions</h3>
-            <p>Execute trades under live market conditions with guided oversight. (45 min)</p>
-        </div>
-        <div class="module-action">
-            <span class="status-badge locked">Locked</span>
-        </div>
-    </div>
+            <!-- Module 9 -->
+            <div class="program-card-tracker locked" id="course-item-9">
+                <div class="module-number">03</div>
+                <div class="module-info">
+                    <h3>Real Market Experience</h3>
+                    <p>Immersive scenarios and practical case studies. (30 min)</p>
+                </div>
+                <div class="module-action">
+                    <span class="status-badge locked" id="status-9">Locked</span>
+                    <button class="btn btn-outline btn-sm" onclick="openCourse(9)">Watch →</button>
+                </div>
+            </div>
 
-    <!-- Module 9 -->
-    <div class="program-card-tracker locked">
-        <div class="module-number">03</div>
-        <div class="module-info">
-            <h3>Real Market Experience</h3>
-            <p>Immersive scenarios and practical case studies. (30 min)</p>
-        </div>
-        <div class="module-action">
-            <span class="status-badge locked">Locked</span>
-        </div>
-    </div>
+            <!-- Module 10 -->
+            <div class="program-card-tracker locked" id="course-item-10">
+                <div class="module-number">04</div>
+                <div class="module-info">
+                    <h3>Strategy Development</h3>
+                    <p>Build, test, and optimize your personal trading or business plan. (35 min)</p>
+                </div>
+                <div class="module-action">
+                    <span class="status-badge locked" id="status-10">Locked</span>
+                    <button class="btn btn-outline btn-sm" onclick="openCourse(10)">Watch →</button>
+                </div>
+            </div>
 
-    <!-- Module 10 -->
-    <div class="program-card-tracker locked">
-        <div class="module-number">04</div>
-        <div class="module-info">
-            <h3>Strategy Development</h3>
-            <p>Build, test, and optimize your personal trading or business plan. (35 min)</p>
-        </div>
-        <div class="module-action">
-            <span class="status-badge locked">Locked</span>
-        </div>
-    </div>
+            <!-- Module 11 -->
+            <div class="program-card-tracker locked" id="course-item-11">
+                <div class="module-number">05</div>
+                <div class="module-info">
+                    <h3>Business Organization Support</h3>
+                    <p>Structure your company entity, workflow, and operations. (30 min)</p>
+                </div>
+                <div class="module-action">
+                    <span class="status-badge locked" id="status-11">Locked</span>
+                    <button class="btn btn-outline btn-sm" onclick="openCourse(11)">Watch →</button>
+                </div>
+            </div>
 
-    <!-- Module 11 -->
-    <div class="program-card-tracker locked">
-        <div class="module-number">05</div>
-        <div class="module-info">
-            <h3>Business Organization Support</h3>
-            <p>Structure your company entity, workflow, and operations. (30 min)</p>
-        </div>
-        <div class="module-action">
-            <span class="status-badge locked">Locked</span>
-        </div>
-    </div>
+            <!-- Module 12 -->
+            <div class="program-card-tracker locked" id="course-item-12">
+                <div class="module-number">06</div>
+                <div class="module-info">
+                    <h3>Business Financing Assistance</h3>
+                    <p>Identify funding sources, capital management, and pitching methods. (30 min)</p>
+                </div>
+                <div class="module-action">
+                    <span class="status-badge locked" id="status-12">Locked</span>
+                    <button class="btn btn-outline btn-sm" onclick="openCourse(12)">Watch →</button>
+                </div>
+            </div>
 
-    <!-- Module 12 -->
-    <div class="program-card-tracker locked">
-        <div class="module-number">06</div>
-        <div class="module-info">
-            <h3>Business Financing Assistance</h3>
-            <p>Identify funding sources, capital management, and pitching methods. (30 min)</p>
         </div>
-        <div class="module-action">
-            <span class="status-badge locked">Locked</span>
-        </div>
-    </div>
-</div>
+    </main>
 
     <!-- Script de gestion du menu hamburger mobile -->
     <script>
@@ -464,7 +477,16 @@
         let unlockedModules = {
             1: true,
             2: false,
-            3: false
+            3: false,
+            4: false,
+            5: false,
+            6: false,
+            7: false,
+            8: false,
+            9: false,
+            10: false,
+            11: false,
+            12: false
         };
 
         async function initDashboard() {
@@ -479,22 +501,27 @@
             
             let displayName = currentUser.user_metadata?.full_name || currentUser.email.split('@')[0];
             displayName = displayName.charAt(0).toUpperCase() + displayName.slice(1);
-            document.getElementById('welcome-title').innerHTML = `Welcome back, <span>${displayName}</span>`;
+            const welcomeTitle = document.getElementById('welcome-title');
+            if (welcomeTitle) {
+                welcomeTitle.innerHTML = `Welcome back, <span>${displayName}</span>`;
+            }
 
             const { data, error } = await supabase
                 .from('user_progress')
-                .select('module_id')
+                .select('module_id, completed')
                 .eq('user_id', currentUser.id);
 
             if (!error && data) {
                 data.forEach(row => {
                     let modId = row.module_id;
-                    updateModuleUI(modId, 'completed');
-                    
-                    let nextMod = modId + 1;
-                    if (unlockedModules[nextMod] !== undefined || nextMod <= 3) {
-                        unlockedModules[nextMod] = true;
-                        updateModuleUI(nextMod, 'unlocked');
+                    if (row.completed) {
+                        updateModuleUI(modId, 'completed');
+                        
+                        let nextMod = modId + 1;
+                        if (unlockedModules[nextMod] !== undefined || nextMod <= 12) {
+                            unlockedModules[nextMod] = true;
+                            updateModuleUI(nextMod, 'unlocked');
+                        }
                     }
                 });
             }
@@ -504,21 +531,24 @@
 
         function updateModuleUI(modId, state) {
             const item = document.getElementById(`course-item-${modId}`);
-            const statusPill = document.getElementById(`status-${modId}`);
-            const numberBox = item.querySelector('.course-number');
+            const statusBadge = document.getElementById(`status-${modId}`);
+            
+            if (!item) return;
 
             if (state === 'completed') {
                 item.classList.remove('locked');
                 item.classList.add('unlocked');
-                numberBox.innerText = "✓";
-                statusPill.className = "status-pill completed";
-                statusPill.innerText = "Completed";
+                if (statusBadge) {
+                    statusBadge.className = "status-badge completed";
+                    statusBadge.innerText = "Completed";
+                }
             } else if (state === 'unlocked') {
                 item.classList.remove('locked');
                 item.classList.add('unlocked');
-                numberBox.innerText = "0" + modId;
-                statusPill.className = "status-pill in-progress";
-                statusPill.innerText = "Available";
+                if (statusBadge) {
+                    statusBadge.className = "status-badge available";
+                    statusBadge.innerText = "Available";
+                }
             }
         }
 
