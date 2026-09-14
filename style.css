@@ -572,7 +572,7 @@ ul {
 /* ==========================================================================
    CTA & CONTACT CARDS
    ========================================================================== */
-.cta-section { padding: 100px 0; background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 70%); text-align: center; }
+.cta-section { padding: 50px 0; background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 70%); text-align: center; }
 .cta-content h2 { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900; margin-bottom: 20px; }
 .cta-content h2 span { color: var(--gold); }
 .cta-content > p { color: var(--text-muted); max-width: 600px; margin: 0 auto 50px; }
