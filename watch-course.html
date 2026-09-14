@@ -147,7 +147,7 @@
             <div class="course-info">
                 <h1 id="course-title">Module 1 : Fundamentals</h1>
                 <p id="course-desc">Master the essential basics of financial management and markets.</p>
-                <button id="complete-btn" class="btn btn-gold" onclick="completeCurrentModule()">Mark as Completed & Unlock Next →</button>
+                <button id="complete-btn" class="btn btn-gold" onclick="completeCurrentModule()">Mark as Completed & Return to Dashboard →</button>
             </div>
         </div>
 
@@ -194,11 +194,29 @@
         let currentUser = null;
         let currentModuleId = 1;
         
-        // Par défaut, seul le module 1 est débloqué (le reste dépendra de la BDD)
         let unlockedModules = {
             1: true,
             2: false,
             3: false
+        };
+
+        // Données des modules pour le chargement dynamique
+        const modulesData = {
+            1: {
+                url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+                title: 'Module 1 : Fundamentals',
+                desc: 'Master the essential basics of financial management and markets.'
+            },
+            2: {
+                url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+                title: 'Module 2 : Trading Strategies',
+                desc: 'Learn how to analyze charts and manage market risks.'
+            },
+            3: {
+                url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+                title: 'Module 3 : Mindset',
+                desc: 'Develop a long-term vision and a seasoned investor mindset.'
+            }
         };
 
         // 1. Charger l'utilisateur et sa progression au démarrage
@@ -210,35 +228,53 @@
             }
             currentUser = session.user;
 
-            // Récupérer la progression de l'utilisateur depuis Supabase
+            // Récupérer le paramètre "module" dans l'URL (ex: watch.html?module=2)
+            const urlParams = new URLSearchParams(window.location.search);
+            const requestedModule = parseInt(urlParams.get('module')) || 1;
+
+            // Récupérer la progression depuis Supabase
             const { data, error } = await supabase
                 .from('user_progress')
-                .select('module_id')
+                .select('module_id, completed')
                 .eq('user_id', currentUser.id);
 
+            let maxUnlocked = 1;
             if (!error && data) {
                 data.forEach(row => {
                     let completedMod = row.module_id;
-                    let nextMod = completedMod + 1;
-                    
-                    // Si ce module a été complété, on débloque le suivant dans l'objet et visuellement
-                    if (unlockedModules[nextMod] !== undefined || nextMod <= 3) {
-                        unlockedModules[nextMod] = true;
-                        
-                        let item = document.getElementById('item-'.concat(nextMod));
+                    if (row.completed) {
+                        let nextMod = completedMod + 1;
+                        if (nextMod > maxUnlocked) maxUnlocked = nextMod;
+
+                        unlockedModules[completedMod] = true;
+                        if (unlockedModules[nextMod] !== undefined) {
+                            unlockedModules[nextMod] = true;
+                        }
+
+                        // Mettre à jour l'UI de la playlist
+                        let item = document.getElementById('item-' + nextMod);
                         if (item) {
                             item.classList.remove('locked');
                             item.classList.add('unlocked');
-                            item.querySelector('.benefit-icon').innerText = "0".concat(nextMod);
+                            item.querySelector('.benefit-icon').innerText = "0" + nextMod;
                         }
                     }
                 });
+            }
+
+            // Vérifier si le module demandé est accessible
+            if (requestedModule <= maxUnlocked || unlockedModules[requestedModule]) {
+                const mod = modulesData[requestedModule] || modulesData[1];
+                switchModule(requestedModule, mod.url, mod.title, mod.desc);
+            } else {
+                alert("Please complete the previous module first!");
+                window.location.href = 'dashboard.html';
             }
         }
 
         initPage();
 
-        // Rendre les fonctions globales pour les attributs onclick du HTML
+        // Fonction pour changer de module actif dans la page
         window.switchModule = function(id, videoUrl, title, description) {
             if (!unlockedModules[id]) {
                 alert("Please complete the previous module to unlock this one!");
@@ -252,23 +288,33 @@
             document.getElementById('course-desc').innerText = description;
 
             document.querySelectorAll('.playlist-item').forEach(item => item.classList.remove('active'));
-            document.getElementById('item-' + id).classList.add('active');
+            const activeItem = document.getElementById('item-' + id);
+            if (activeItem) {
+                activeItem.classList.add('active');
+            }
             
             const btn = document.getElementById('complete-btn');
             if(id === 3) {
-                btn.innerText = "Finish Course 🎓";
+                btn.innerText = "Finish Course & Return to Dashboard 🎓";
             } else {
-                btn.innerText = "Mark as Completed & Unlock Next →";
+                btn.innerText = "Mark as Completed & Return to Dashboard →";
             }
         };
 
+        // Enregistrer la complétion dans Supabase et retourner au dashboard
         window.completeCurrentModule = async function() {
             if (!currentUser) return;
 
-            // Enregistrer dans Supabase que le module actuel est complété
             const { error } = await supabase
                 .from('user_progress')
-                .upsert({ user_id: currentUser.id, module_id: currentModuleId, completed: true }, { onConflict: 'user_id, module_id' });
+                .upsert({ 
+                    user_id: currentUser.id, 
+                    module_id: currentModuleId, 
+                    completed: true,
+                    updated_at: new Date().toISOString()
+                }, { 
+                    onConflict: 'user_id, module_id' 
+                });
 
             if (error) {
                 console.error("Error saving progress:", error);
@@ -276,29 +322,21 @@
                 return;
             }
 
-            let nextModuleId = currentModuleId + 1;
-
-            if (unlockedModules[nextModuleId] !== undefined) {
-                unlockedModules[nextModuleId] = true;
-                
-                let nextItem = document.getElementById('item-' + nextModuleId);
-                nextItem.classList.remove('locked');
-                nextItem.classList.add('unlocked');
-                nextItem.querySelector('.benefit-icon').innerText = "0" + nextModuleId;
-
-                alert(`Module ${currentModuleId} completed! Module ${nextModuleId} is now unlocked.`);
-                nextItem.click();
-            } else {
-                alert("Congratulations! You have completed all available modules.");
-            }
+            alert(`Module ${currentModuleId} completed successfully!`);
+            
+            // Redirection automatique vers le dashboard
+            window.location.href = 'dashboard.html';
         };
 
         // Gestion de la déconnexion
-        document.getElementById('logout-btn').addEventListener('click', async (e) => {
-            e.preventDefault();
-            await supabase.auth.signOut();
-            window.location.href = 'index.html';
-        });
+        const logoutBtn = document.getElementById('logout-btn');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', async (e) => {
+                e.preventDefault();
+                await supabase.auth.signOut();
+                window.location.href = 'index.html';
+            });
+        }
     </script>
 </body>
 </html>
