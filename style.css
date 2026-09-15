@@ -638,20 +638,21 @@ ul {
 footer {
     background-color: #0b0f19;
     border-top: 1px solid #1f2937;
-    padding: 40px 20px;
+    padding: 50px 20px 20px 20px;
     color: #9ca3af;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* C'est cette ligne qui force les 4 colonnes côte à côte */
 .footer-container {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr; /* 4 colonnes bien réparties */
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
     gap: 30px;
     align-items: start;
 }
 
-/* Bloc de gauche (Logo + description + carte fondateur intégrée) */
 .footer-brand {
     display: flex;
     flex-direction: column;
@@ -665,7 +666,7 @@ footer {
 }
 
 .footer-logo {
-    height: 45px;
+    height: 40px;
     width: auto;
 }
 
@@ -686,14 +687,14 @@ footer {
     color: #9ca3af;
 }
 
-/* Mini carte du fondateur compacte pour le footer */
+/* La carte du fondateur bien stylisée */
 .footer-founder-card {
     background: #111827;
     padding: 15px;
     border-radius: 8px;
     border: 1px solid #1f2937;
     text-align: left;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 .founder-name {
@@ -716,7 +717,7 @@ footer {
     margin: 0;
 }
 
-/* Style des colonnes de liens (Quick Links, Legal, Contact) */
+/* Colonnes de liens */
 .footer-col h4 {
     color: #ffffff;
     font-size: 0.95rem;
@@ -749,7 +750,7 @@ footer {
 
 .footer-bottom {
     max-width: 1200px;
-    margin: 30px auto 0 auto;
+    margin: 40px auto 0 auto;
     padding-top: 20px;
     border-top: 1px solid #1f2937;
     text-align: center;
