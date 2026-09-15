@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termes & Conditions - Growth Capital Academy</title>
+    <style>
+        body {
+            background-color: #0b0f19;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .legal-container {
+            background: #111827;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 700px;
+            border: 1px solid #1f2937;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 30px;
+            text-decoration: none;
+        }
+        .hero-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            line-height: 1.1;
+            margin: 0;
+        }
+        .line-gold { color: #d4af37; display: block; }
+        .line-white { color: #ffffff; display: block; }
+        h2 {
+            color: #d4af37;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #1f2937;
+            padding-bottom: 10px;
+        }
+        h3 {
+            color: #ffffff;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            margin-bottom: 5px;
+        }
+        p, li {
+            color: #9ca3af;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #d4af37;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .date {
+            margin-top: 30px;
+            font-size: 0.85rem;
+            color: #6b7280;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="legal-container">
+        <!-- Logo et Titre -->
+        <a href="dashboard.html" class="logo-container">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="40" height="40" rx="8" fill="#1f2937" stroke="#d4af37" stroke-width="1"/>
+                <path d="M12 28L20 12L28 28H23L20 21L17 28H12Z" fill="#d4af37"/>
+            </svg>
+            <h1 class="hero-title">
+                <span class="line-gold">GROWTH CAPITAL</span>
+                <span class="line-white">ACADEMY</span>
+            </h1>
+        </a>
+
+        <h2>TERMS & CONDITIONS</h2>
+        <p>By accessing and using GCA Online School, you agree to these terms.</p>
+
+        <h3>1. Courses</h3>
+        <p>All courses, materials and content are property of GCA. You get personal access. No sharing, resale or distribution.</p>
+
+        <h3>2. Payments & Refunds</h3>
+        <p>All sales are final. Due to the digital nature of our products, we do not offer refunds.</p>
+
+        <h3>3. Results</h3>
+        <p>Results may vary. We provide education and tools, but your success depends on your effort and application.</p>
+
+        <h3>4. Intellectual Property</h3>
+        <p>All GCA content is protected. Unauthorized use will result in legal action.</p>
+
+        <p class="date">Last Updated: September 2026</p>
+
+        <a href="dashboard.html" class="back-link">&larr; Retour au site</a>
+    </div>
+
+</body>
+</html>
