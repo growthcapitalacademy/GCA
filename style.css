@@ -19,18 +19,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 html {
     scroll-behavior: smooth;
 }
 
-* {
-    font-family: 'Poppins', sans-serif;
-}
-
 body {
-    font-family: 'Inter', sans-serif;
     background-color: var(--bg-dark);
     color: var(--text-main);
     line-height: 1.6;
@@ -420,16 +416,16 @@ ul {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: rgba(212, 175, 55, 0.12); /* Fond légèrement plus distinct */
-    border: 1px solid var(--gold); /* Bordure dorée pour mieux le détacher */
+    background: rgba(212, 175, 55, 0.12);
+    border: 1px solid var(--gold);
     padding: 6px 14px;
     border-radius: 50px;
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 1.5px;
     color: var(--gold);
-    margin-top: 30px;    /* Ajoute de l'espace au-dessus */
-    margin-bottom: 25px; /* Garde ton espace en bas */
+    margin-top: 30px;
+    margin-bottom: 25px;
 }
 
 .pulse {
